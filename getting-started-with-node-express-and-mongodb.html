@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Getting started with Node, Express, and MongoDB</title>
+	<meta charset="utf-8" />
+	<meta name="author" content="Jason Dorweiler" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- JS Libraries to Load -->
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://www.transistor.io/theme/js/bootstrap.min.js"></script>
+	<script src="http://www.transistor.io/theme/js/progressbars.js"></script>
+	
+	
+	<!-- CSS Styles -->
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/bootstrap.simplex.min.css" type="text/css" />
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/bootstrap-responsive.min.css" type="text/css" />
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/font-awesome.min.css" type="text/css" />
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/main.css" type="text/css">
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/pygment.css" type="text/css">
+	<!--[if IE 7]>
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/font-awesome-ie7.min.css">
+	<![endif]-->
+	
+	<!-- Feed Information / Copied from Simple Theme -->
+	<link href="http://www.transistor.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="transistor.io Full Atom Feed" />
+	<link href="http://www.transistor.io/feeds/Projects.atom.xml" type="application/atom+xml" rel="alternate" title="transistor.io Categories Atom Feed" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41941180-1', 'transistor.io');
+  ga('send', 'pageview');
+
+</script>
+
+<link href="//vjs.zencdn.net/4.4/video-js.css" rel="stylesheet">
+<script src="//vjs.zencdn.net/4.4/video.js"></script>
+<style>
+.video-js {padding-top: 56.25%}
+.vjs-fullscreen {padding-top: 0px}
+</style>
+
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container pull-left offset1">
+			<a class="btn btn-navbar clearfix pull-right" data-target=".navbar-responsive-collapse" data-toggle="collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+			<a class="brand" href="http://www.transistor.io/index.html">transistor.io </a>
+			
+			<div class="nav-collapse collapse navbar-responsive-collapse">
+				<ul class="nav">
+					<li>
+						<a href="http://www.transistor.io/pages/about-me.html"><i class="icon-user" ></i>About me</a>
+					</li>
+					<li class="divider-vertical"></li>
+					<li >
+						<a href="http://www.transistor.io/category/chemistry.html"><i class="icon-folder-open icon-large"></i> Chemistry</a>
+					</li>
+					<li class="divider-vertical"></li>
+					<li >
+						<a href="http://www.transistor.io/category/climbing.html"><i class="icon-folder-open icon-large"></i> Climbing</a>
+					</li>
+					<li class="divider-vertical"></li>
+					<li class="active">
+						<a href="http://www.transistor.io/category/projects.html"><i class="icon-folder-open icon-large"></i> Projects</a>
+					</li>
+					<li class="divider-vertical"></li>
+				<li >
+					<a href="http://www.transistor.io/archives.html"><i class="icon-th-list"></i> Archives</a>
+				</li>
+				
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid" id="content">
+	<div class="row-fluid">
+		<div class="span1"></div>
+		<div class="span10">
+			<div class="row">
+				<div class="offset1 span8">
+<section id="content">
+<article>
+	<header>
+			<h1>
+					<a href=""
+							rel="bookmark"
+							title="Permalink to Getting started with Node, Express, and MongoDB">
+							Getting started with Node, Express, and MongoDB
+					</a>
+			</h1>
+	</header>
+	
+	<div class="entry-content">
+	
+	<div class="well">
+<div class="row-fuild">
+	<div class="span6">
+	<span class="label text-center">Date</span>
+	<abbr class="published" title="2014-03-28T00:00:00">
+		<i class="icon-calendar"></i>Fri 28 March 2014
+	</abbr>
+	</div>
+</div>	</div>
+	<p>For this how-to guide, I decided to look into NodeJS.  I have played around with it before, but this was prior to starting a CS degree, and it went a bit over my head.  I though I would take another look at it and see if I can figure it out after getting a few CS classes under my belt.  I found many to-do lists and chat servers- both of which didn't seem to difficult to create.  I  wanted to complete a more substantial project with potential for future use.  I found a tutorial that uses <a href="http://blog.ijasoneverett.com/2013/03/a-sample-app-with-node-js-express-and-mongodb-part-1/">Node with ExpressJS and MongoDB</a> to create a web page that can interact with an employee database.</p>
+<p>This tutorial is great and well-put together. I got the origional site up very quickly, but as soon as I tried to make changes, it began to fall apart.  I think part of that was just because Javascript is very new to me and I think there is room for a similar tutorial but one that really breaks the application down and shows how it works.  I hope that after following this tutorial you will have a good understanding of how to use Node to set up a site like this.</p>
+<p>To do this I will be showing you  how to set up a very basic home brewing recipe website that will store data in MongoDB.</p>
+<p>Just so you know what you're getting into, here is a quick recording of me walking through the site.  All of the source files can be found on my <a href="https://github.com/jdorweiler/beerDatabase">GitHub</a> and a short video below shows the basic functionality.</p>
+<div class="wrapper">
+<div class="videocontent">
+<video id="example_video_1" class="video-js vjs-default-skin vjs-playing"
+  controls preload="auto" width="auto" height="auto"
+  data-setup='{"example_option":true}'>
+ <source src="images/node/clip.ogv" type='video/ogg' />
+</video>
+</div>
+</div>
+
+<h2 id="getting-started">Getting Started</h2>
+<p>The Node website has install instructions for Linux, Mac, and Windows.  For this tutorial I'll be using Ubuntu 12.04. I can't make any guarentees for other operating systems, but assuming you can get Node installed, everything else should be the same.</p>
+<p>On Ubuntu, Node is very easy to install.  You can get Node and npm (Node Package Manager) installed by running:</p>
+<p><code>$ sudo apt-get install nodejs</code></p>
+<p>We will also be using ExpressJS and MongoDB.  Run the following commands to install Express</p>
+<p><code>$ sudo npm install express -g</code></p>
+<p><code>$ sudo npm install</code></p>
+<p>Installing MongoDB is a bit more complicated, but still fairly easy.  Follow the instructions in this link to get your <a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/">database set up</a>.  While you are there, it wouldn't be a bad idea to have a look at the <a href="http://mongodb.github.io/node-mongodb-native/">API</a> before we get started.</p>
+<p><strong>Hello World with Node and Express</strong></p>
+<p>Now that you have everything set up, make a new folder for your project and move to that directory.  In this directory, you can initialize the skeleton structure of the site by running</p>
+<p><code>express -c stylus</code></p>
+<p>This also sets up your site to work with Stylus, which is a very simple css language.  We won't be using Stylus in this example, but it is standard to include it with Express.  And, it would be good to have when you perfect your site's appearance with some CSS.
+The next step is to tell express that we are going to be working with MongoDB.  To do this, add a dependancy in the package.json file in the top level of your directory.  Do this by adding the line</p>
+<p><code>"mongodb": "&gt;= 0.9.6-7"</code></p>
+<p>in the dependancy section.  Now running
+<code>npm install -d</code> will set everything up to work with MongoDB.  We can test out Node and Express to see if everything works by running</p>
+<p><code>$ node app.js</code></p>
+<p>You should see a line on your terminal that says the Express server is listening on port 3000.  Open your favorite browser and go to the address 0:3000.</p>
+<p><img alt="img1" src="images/node/screen1.png" /></p>
+<p>Before we move on, it would be helpful to look at where this page came from.  Open up the app.js file located in the top level of your directory.  You should see a file like the one below that was automatically created for you when you ran the Express command above.</p>
+<div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * Module dependencies.</span>
+<span class="cm"> */</span>
+
+<span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">routes</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./routes&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">user</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./routes/user&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+
+<span class="c1">// all environments</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;port&#39;</span><span class="p">,</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span> <span class="o">||</span> <span class="mi">3000</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;views&#39;</span><span class="p">,</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">&#39;views&#39;</span><span class="p">));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;view engine&#39;</span><span class="p">,</span> <span class="s1">&#39;jade&#39;</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">favicon</span><span class="p">());</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">logger</span><span class="p">(</span><span class="s1">&#39;dev&#39;</span><span class="p">));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">urlencoded</span><span class="p">());</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">methodOverride</span><span class="p">());</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">router</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;stylus&#39;</span><span class="p">).</span><span class="nx">middleware</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">&#39;public&#39;</span><span class="p">)));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="kr">static</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">&#39;public&#39;</span><span class="p">)));</span>
+
+<span class="c1">// development only</span>
+<span class="k">if</span> <span class="p">(</span><span class="s1">&#39;development&#39;</span> <span class="o">==</span> <span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;env&#39;</span><span class="p">))</span> <span class="p">{</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">errorHandler</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="nx">routes</span><span class="p">.</span><span class="nx">index</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">,</span> <span class="nx">user</span><span class="p">.</span><span class="nx">list</span><span class="p">);</span>
+
+<span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">app</span><span class="p">).</span><span class="nx">listen</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;port&#39;</span><span class="p">),</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Express server listening on port &#39;</span> <span class="o">+</span> <span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;port&#39;</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>You can think of this file and the brains for the server.  The the function at the bottom <code>http.createServer</code> is where the actual Node server is started.  Above that, we set the port using</p>
+<div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;port&#39;</span><span class="p">,</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span> <span class="o">||</span> <span class="mi">3000</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Let's take a look at the routes.  The routes are going to be the functions that begin with <code>app.get()</code> or <code>app.post()</code>.  When the server gets a GET or POST request, we need to know what page to feed back to the browser.  This is where the routes are necessary.</p>
+<div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="nx">routes</span><span class="p">.</span><span class="nx">index</span><span class="p">);</span>
+</pre></div>
+
+
+<p>This line tells Node what to do when we have a GET request for the page located at 0:3000/ or our index page.  Specifically, it is sending the page <code>routes.index</code> back to the browser.  Inside the routes.index file you will see the following function.</p>
+<div class="highlight"><pre><span class="nx">exports</span><span class="p">.</span><span class="nx">index</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Express&#39;</span> <span class="p">});</span>
+</pre></div>
+
+
+<p>This is using one of the <a href="http://expressjs.com/api.html#app.render">Express API</a> functions called render <code>render('index', { title: 'Express' }</code>.  This simple line of code is more complex than I originally thought.  After much reading, my best explanaio ins that this renders a HTML string which is called a view in the API.  By default, Express looks in the <code>views</code> folder for this index page and sends it a title called "Express".  In the index file within the views folder, there is simple html page that looks like this:</p>
+<div class="highlight"><pre>extends layout
+block content
+  h1= title
+  p Welcome to #{title}
+</pre></div>
+
+
+<p>Note that this page is actually written in <a href="http://jade-lang.com/">Jade</a> which is the default HTML language used by Express.</p>
+<p>The <code>export.index</code> is necessary because Node does not allowing sharing of variables between files.  By adding export, you are letting Node know that this variable can be used by other functions in other files.  In this case, the origional app.get function in our app.js file will serve us the HTML content.  Now that we have covered the basics of working with Node and Express, let's begin interacting with the MongoDB database.</p>
+<h2 id="interacting-with-mongodb">Interacting with MongoDB</h2>
+<p>We need to make a few changes to our app.js file so that it will work with the database.  The way it is set up right now we are only sending static pages back to the browser.  We will add a few new functions to the app.js file that will call functions in a separate file that handles all the interaction with th edabase.  First we need to add a few lines in app.js.  In this case, I am going to be using a database called <code>RecipeProvider</code>.  We will need to add in an additional dependancy for the database.</p>
+<p><code>RecipeProvider = require('./recipeProvider').RecipeProvider;</code></p>
+<p>This dependency tells Node to use module called recipeProvider, which we will write next.  In the top level of your directory, make a file called recipeProvider.js.  Note that this file name is case-sensitive and must match the file you loaded above using <code>require()</code>.</p>
+<p>Here is a link the complete <a href="https://github.com/jdorweiler/beerDatabase/blob/master/recipeProvider.js">recipeProvider.js</a> file.  I will walk through this process in steps below.</p>
+<p>The first thing we need to do is set up our database.</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">Db</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mongodb&#39;</span><span class="p">).</span><span class="nx">Db</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">Connection</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mongodb&#39;</span><span class="p">).</span><span class="nx">Connection</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">Server</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mongodb&#39;</span><span class="p">).</span><span class="nx">Server</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">BSON</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mongodb&#39;</span><span class="p">).</span><span class="nx">BSON</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">ObjectID</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mongodb&#39;</span><span class="p">).</span><span class="nx">ObjectID</span><span class="p">;</span>
+</pre></div>
+
+
+<p>It is interesting to note that the<a href="http://docs.mongodb.org/manual/reference/object-id/"> ObjectID</a> which is a function in the MongoDB API that allows us to create and use the ID strings that are used for keys in the database.  Above that line is the require statement for the <a href="http://http://docs.mongodb.org/manual/core/document/">BSON </a> API from MongoDB.  The database stores things in a format called BSON which is for our purposes is the same thing as JSON.  Here is an example of what a single beer recipe might look like in the database:</p>
+<div class="highlight"><pre><span class="p">{</span> <span class="nx">_id</span><span class="o">:</span> <span class="mi">53063</span><span class="nx">adaca24b99c255d4f09</span><span class="p">,</span>
+  <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Belgan Tripel&#39;</span><span class="p">,</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Troegs La Grave&#39;</span><span class="p">,</span>
+  <span class="nx">grain</span><span class="o">:</span> <span class="p">[</span> <span class="p">[</span> <span class="s1">&#39;Pilsner 2 Row&#39;</span><span class="p">,</span> <span class="s1">&#39;Munich&#39;</span> <span class="p">],</span> <span class="p">[</span> <span class="s1">&#39;12 lbs&#39;</span><span class="p">,</span> <span class="s1">&#39;2 lbs&#39;</span> <span class="p">]</span> <span class="p">],</span>
+  <span class="nx">hops</span><span class="o">:</span> <span class="p">[</span> <span class="p">[</span> <span class="s1">&#39;Saaz&#39;</span><span class="p">,</span> <span class="s1">&#39;Willamette&#39;</span> <span class="p">],</span> <span class="p">[</span> <span class="s1">&#39;2 oz&#39;</span><span class="p">,</span> <span class="s1">&#39;2 oz&#39;</span> <span class="p">]</span> <span class="p">],</span>
+  <span class="nx">yeast</span><span class="o">:</span> <span class="p">[</span> <span class="s1">&#39;Trappist&#39;</span><span class="p">,</span> <span class="s1">&#39;1 vial&#39;</span> <span class="p">]</span> <span class="p">}</span>
+  <span class="p">}</span>
+</pre></div>
+
+
+<p>Then we set up a RecipeProvider object that will connect us to the database.</p>
+<div class="highlight"><pre><span class="c1">// connect to the database</span>
+<span class="nx">RecipeProvider</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">host</span><span class="p">,</span> <span class="nx">port</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">db</span><span class="o">=</span> <span class="k">new</span> <span class="nx">Db</span><span class="p">(</span><span class="s1">&#39;node-mongo-recipe&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Server</span><span class="p">(</span><span class="nx">host</span><span class="p">,</span> <span class="nx">port</span><span class="p">,</span> <span class="p">{</span><span class="nx">safe</span><span class="o">:</span> <span class="kc">false</span><span class="p">},</span> <span class="p">{</span><span class="nx">auto_reconnect</span><span class="o">:</span> <span class="kc">true</span><span class="p">},</span> <span class="p">{}));</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="kd">function</span><span class="p">(){});</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<h2 id="setting-up-our-html-pages">Setting up our HTML pages</h2>
+<p>Before we get too far, let's go set up our HTML pages.  For this demo, we will have an index, new recipe, and edit recipe pages.  Make a new file in the <code>views</code> folder called <code>index.jade</code>  Here is what our completed index page will look like.</p>
+<div class="highlight"><pre><span class="kr">extends</span> <span class="nx">layout</span>
+<span class="nx">head</span>
+<span class="nx">body</span>
+  <span class="nx">block</span> <span class="nx">content</span>
+    <span class="nx">h1</span><span class="o">=</span> <span class="nx">title</span>
+
+    <span class="err">#</span><span class="nx">recipes</span>
+      <span class="nx">div</span>
+        <span class="nx">table</span> 
+          <span class="nx">thead</span>
+            <span class="nx">tr</span>
+              <span class="nx">td</span> <span class="nx">Style</span>
+              <span class="nx">td</span> <span class="nx">Recipe</span> <span class="nx">Name</span>
+            <span class="nx">tr</span> 
+            <span class="o">-</span> <span class="nx">each</span> <span class="nx">recipe</span> <span class="k">in</span> <span class="nx">recipes</span>
+                <span class="nx">tr</span>
+                    <span class="nx">td</span><span class="o">=</span> <span class="nx">recipe</span><span class="p">.</span><span class="nx">title</span>
+                    <span class="nx">td</span><span class="o">=</span> <span class="nx">recipe</span><span class="p">.</span><span class="nx">name</span> 
+                    <span class="nx">td</span>
+                        <span class="nx">div</span>
+                            <span class="nx">form</span><span class="p">(</span> <span class="nx">method</span><span class="o">=</span><span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="nx">action</span><span class="o">=</span><span class="s2">&quot;/recipe/:id/delete&quot;</span><span class="p">)</span>
+                            <span class="nx">input</span><span class="p">(</span><span class="nx">name</span><span class="o">=</span><span class="s2">&quot;_id&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;hidden&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="o">=</span><span class="nx">recipe</span><span class="p">.</span><span class="nx">_id</span><span class="p">.</span><span class="nx">toHexString</span><span class="p">())</span> 
+                            <span class="nx">input</span><span class="p">(</span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;edit&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span> <span class="nx">style</span><span class="o">=</span><span class="s2">&quot;float: right&quot;</span><span class="p">)</span> 
+                    <span class="nx">td</span>
+                        <span class="nx">div</span>
+                            <span class="nx">form</span><span class="p">(</span> <span class="nx">method</span><span class="o">=</span><span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="nx">action</span><span class="o">=</span><span class="s2">&quot;/recipe/:id/edit&quot;</span><span class="p">)</span>
+                            <span class="nx">input</span><span class="p">(</span><span class="nx">name</span><span class="o">=</span><span class="s2">&quot;_id&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;hidden&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="o">=</span><span class="nx">recipe</span><span class="p">.</span><span class="nx">_id</span><span class="p">.</span><span class="nx">toHexString</span><span class="p">())</span> 
+                            <span class="nx">input</span><span class="p">(</span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;edit&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;edit&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span> <span class="nx">style</span><span class="o">=</span><span class="s2">&quot;float: right&quot;</span><span class="p">)</span> 
+
+        <span class="nx">a</span><span class="p">(</span><span class="nx">href</span><span class="o">=</span><span class="s2">&quot;/recipe/new&quot;</span><span class="p">)</span><span class="o">=</span> <span class="s2">&quot;add new recipe&quot;</span>
+</pre></div>
+
+
+<p>Don't forget that for this demo, we are using Express with Jade as our HTML template language.  All of the typical rules of HTML still apply, but with Jade you don't need to use closing tags.  Jade is however whitespace sensitive, so you must indent anything that would be in that particular tag.  It also distinguishes between tabs and 4-spaces.  You must be consistent throughout the page, so choose one style and stick with it.</p>
+<p>A neat discovery with Jade is that you can use loops and conditionals right inline with the other code.  For example see the line:</p>
+<div class="highlight"><pre><span class="o">-</span> <span class="nx">each</span> <span class="nx">recipe</span> <span class="k">in</span> <span class="nx">recipes</span>
+</pre></div>
+
+
+<p>Use the <code>-</code> to tell Jade that you want to use a loop or conditional, and then no braces are needed.  In this page, we are creating a table which will have two header cells that display the recipe title and name.  Below the table, we are going to loop through an array called recipes. For each recipe in the array, we will print out the title and name in separate cells.  To the right of each recipe, we will have buttons that will allow you to delete and edit a recipe.  At the bottom of the page, we leave a link to the new recipe page.  While not functional yet, here is a preview of what the front page will look like once finished.</p>
+<p><img alt="screen4" src="images/node/screen4.png" /></p>
+<p>Now that we have the index page completed, let's make the add new recipe page.  Make a new file called <code>new_recipe.jade</code> in your views folder.  Here is what our new recipe page will look like.</p>
+<div class="highlight"><pre><span class="kr">extends</span> <span class="nx">layout</span>
+<span class="nx">block</span> <span class="nx">content</span>
+    <span class="nx">h1</span><span class="o">=</span> <span class="nx">title</span>
+    <span class="nx">div</span><span class="p">.</span><span class="nx">newrecipe</span>
+        <span class="nx">form</span><span class="p">(</span> <span class="nx">method</span><span class="o">=</span><span class="s2">&quot;post&quot;</span><span class="p">)</span>
+            <span class="nx">table</span>
+                <span class="nx">tr</span>
+                    <span class="nx">div</span>
+                        <span class="nx">span</span><span class="p">.</span><span class="nx">label</span> <span class="nx">Title</span> <span class="o">:</span>
+                        <span class="nx">input</span><span class="p">(</span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;title&quot;</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s2">&quot;Recipe Style&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;editRecipeTitle&quot;</span><span class="p">)</span>
+                        <span class="nx">span</span><span class="p">.</span><span class="nx">label</span> <span class="nx">Name</span> <span class="o">:</span>
+                        <span class="nx">input</span><span class="p">(</span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;name&quot;</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s2">&quot;Recipe Name&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;editRecipeName&quot;</span><span class="p">)</span>
+                <span class="nx">tr</span>
+                    <span class="nx">div</span>
+                        <span class="nx">span</span><span class="p">.</span><span class="nx">label</span> <span class="nx">Grain</span> <span class="o">:</span>
+                        <span class="nx">input</span><span class="p">(</span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;grain&quot;</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s2">&quot;Grain&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;editRecipeGrain&quot;</span><span class="p">)</span>
+                        <span class="nx">span</span><span class="p">.</span><span class="nx">label</span> <span class="nx">amount</span> <span class="o">:</span>
+                        <span class="nx">input</span><span class="p">(</span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;grain-ammount&quot;</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;editRecipeAmount&quot;</span><span class="p">)</span>
+                    <span class="nx">div</span>
+                        <span class="nx">span</span><span class="p">.</span><span class="nx">label</span> <span class="nx">Grain</span> <span class="o">:</span>
+                        <span class="nx">input</span><span class="p">(</span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;grain&quot;</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s2">&quot;Grain&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;editRecipeGrain&quot;</span><span class="p">)</span>
+                        <span class="nx">span</span><span class="p">.</span><span class="nx">label</span> <span class="nx">amount</span> <span class="o">:</span>
+                        <span class="nx">input</span><span class="p">(</span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;grain-ammount&quot;</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;editRecipeAmount&quot;</span><span class="p">)</span>
+                <span class="nx">tr</span>
+                    <span class="nx">div</span>
+                        <span class="nx">span</span><span class="p">.</span><span class="nx">label</span> <span class="nx">Hops</span> <span class="o">:</span>
+                        <span class="nx">input</span><span class="p">(</span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;hops&quot;</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s2">&quot;Grain&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;editRecipeGrain&quot;</span><span class="p">)</span>
+                        <span class="nx">span</span><span class="p">.</span><span class="nx">label</span> <span class="nx">amount</span> <span class="o">:</span>
+                        <span class="nx">input</span><span class="p">(</span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;hops-ammount&quot;</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;editRecipeAmount&quot;</span><span class="p">)</span>
+                <span class="nx">tr</span>
+                    <span class="nx">div</span>
+                        <span class="nx">span</span><span class="p">.</span><span class="nx">label</span> <span class="nx">Hops</span> <span class="o">:</span>
+                        <span class="nx">input</span><span class="p">(</span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;hops&quot;</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s2">&quot;Grain&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;editRecipeGrain&quot;</span><span class="p">)</span>
+                        <span class="nx">span</span><span class="p">.</span><span class="nx">label</span> <span class="nx">amount</span> <span class="o">:</span>
+                        <span class="nx">input</span><span class="p">(</span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;hops-ammount&quot;</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;editRecipeAmount&quot;</span><span class="p">)</span>
+                <span class="nx">tr</span>
+                    <span class="nx">div</span>
+                        <span class="nx">span</span><span class="p">.</span><span class="nx">label</span> <span class="nx">Yeast</span> <span class="o">:</span>
+                        <span class="nx">input</span><span class="p">(</span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;yeast&quot;</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s2">&quot;Grain&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;editRecipeGrain&quot;</span><span class="p">)</span>
+                        <span class="nx">span</span><span class="p">.</span><span class="nx">label</span> <span class="nx">amount</span> <span class="o">:</span>
+                        <span class="nx">input</span><span class="p">(</span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;yeast-ammount&quot;</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;editRecipeAmount&quot;</span><span class="p">)</span>
+
+                <span class="err">#</span><span class="nx">editRecupeSubmit</span>
+                <span class="nx">br</span>
+                <span class="nx">input</span><span class="p">(</span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;Save&quot;</span><span class="p">)</span>
+        <span class="nx">br</span>
+        <span class="nx">a</span><span class="p">(</span><span class="nx">href</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="p">)</span><span class="o">!=</span> <span class="s2">&quot;Back to Recipe List&quot;</span>
+</pre></div>
+
+
+<p>This page will render a form with a box for a recipe title, name, 2 grains, 2 hops, and 1 type of yeast.  Take a look at the names for each of the input boxes.  We will use these to create our JSON array that will be sent to the database. Here is the actual JSON data that will be sent after we submit the form:</p>
+<div class="highlight"><pre><span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;New Beer Style&#39;</span><span class="p">,</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Recipe Name&#39;</span><span class="p">,</span>
+  <span class="nx">grain</span><span class="o">:</span> 
+   <span class="p">[</span> <span class="p">[</span> <span class="s1">&#39;1 Grain Name&#39;</span><span class="p">,</span> <span class="s1">&#39;2 Grain Name&#39;</span> <span class="p">],</span>
+     <span class="p">[</span> <span class="s1">&#39;1 Grain Amt&#39;</span><span class="p">,</span> <span class="s1">&#39;2 Grain Amt&#39;</span> <span class="p">]</span> <span class="p">],</span>
+  <span class="nx">hops</span><span class="o">:</span> <span class="p">[</span> <span class="p">[</span> <span class="s1">&#39;1 Hops&#39;</span><span class="p">,</span> <span class="s1">&#39;2 Hops&#39;</span> <span class="p">],</span> <span class="p">[</span> <span class="s1">&#39;1 Hops Amt&#39;</span><span class="p">,</span> <span class="s1">&#39;2 Hops Amt&#39;</span> <span class="p">]</span> <span class="p">],</span>
+  <span class="nx">yeast</span><span class="o">:</span> <span class="p">[</span> <span class="s1">&#39;Yeast Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Yeast Amt&#39;</span> <span class="p">]</span> <span class="p">}</span>
+</pre></div>
+
+
+<h2 id="setting-up-the-routes">Setting up the routes</h2>
+<p>Now that we have the index and new recipe pages ready, let's set up the routes for the site in the <code>app.js</code> file.  The complete app.js file is a bit long, so I'll link the full version here: <a href="https://github.com/jdorweiler/beerDatabase/blob/master/app.js">app.js</a>.</p>
+<p>Think back to the hello world example at the beginning of the tutorial, and you will recognise that <code>app.get</code> functions.  We will use the same idea to create routes for the site by definiing different <code>app.get</code> and <code>app.post</code> functions.  Let's look at the route for our new index page. </p>
+<div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
+    <span class="nx">recipeProvider</span><span class="p">.</span><span class="nx">findAll</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">recip</span><span class="p">){</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="p">{</span>
+            <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;Recipes&quot;</span><span class="p">,</span>
+            <span class="nx">recipes</span><span class="o">:</span><span class="nx">recip</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>The function above will use our recipeProvider object, which we connected to the database using:</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">recipeProvider</span><span class="o">=</span> <span class="k">new</span> <span class="nx">RecipeProvider</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">27017</span><span class="p">);</span>
+</pre></div>
+
+
+<p>This function will be called whenever we have a GET request to the <code>'/'</code> address.  When this function is called, it will use the <code>findAll()</code> method (which we still have to write, see next section) which will return our recipes from the database.  Then we use <code>render()</code> just like we did in the hello world page to render our <code>index.jade</code> page and send it the recipes.  This will produce the front page with a table of recipes that I showed you earlier.</p>
+<p>If you want to test out your index page right now, you can do so by first starting MongoDB in a separate terminal using</p>
+<p><code>$ sudo mongod</code></p>
+<p>and then running your app.js file</p>
+<p><code>$ node app.js</code></p>
+<p>If that worked you should now have a blank recipe page.</p>
+<p>Our index page is pretty boring without any recipies on it, so let's write the routes to handle the <code>recipe_new.jade</code> page.  First we need to write the function that handles a GET request to the page since we are going to go to the page through the normal link at the bottom of the index page.  This follows the same idea as the other route fuctions.  A GET request to this page will call the function which will render the recipe_new.jade page and send the title "New Recipe".</p>
+<div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/recipe/new&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s2">&quot;recipe_new&quot;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;New Recipe&quot;</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>More interesting is the function we need to handle a POST from the new recipe page.  Remember that we are submitting the data as a form, so we need a way to handle the POST.  Inside of this function, we are going to call the <code>save()</code> method (we still need to write this) and we will send the save method our JSON data, which we will then format using this fuction.</p>
+<div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/recipe/new&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
+    <span class="nx">recipeProvider</span><span class="p">.</span><span class="nx">save</span><span class="p">({</span>
+        <span class="nx">title</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">param</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">),</span>
+        <span class="nx">name</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">param</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">),</span>
+        <span class="nx">grain</span><span class="o">:</span> <span class="p">[</span><span class="nx">req</span><span class="p">.</span><span class="nx">param</span><span class="p">(</span><span class="s1">&#39;grain&#39;</span><span class="p">),</span> <span class="nx">req</span><span class="p">.</span><span class="nx">param</span><span class="p">(</span><span class="s1">&#39;grain-ammount&#39;</span><span class="p">)],</span>
+        <span class="nx">hops</span><span class="o">:</span>  <span class="p">[</span><span class="nx">req</span><span class="p">.</span><span class="nx">param</span><span class="p">(</span><span class="s1">&#39;hops&#39;</span><span class="p">),</span> <span class="nx">req</span><span class="p">.</span><span class="nx">param</span><span class="p">(</span><span class="s1">&#39;hops-ammount&#39;</span><span class="p">)],</span>
+        <span class="nx">yeast</span><span class="o">:</span> <span class="p">[</span><span class="nx">req</span><span class="p">.</span><span class="nx">param</span><span class="p">(</span><span class="s1">&#39;yeast&#39;</span><span class="p">),</span> <span class="nx">req</span><span class="p">.</span><span class="nx">param</span><span class="p">(</span><span class="s1">&#39;yeast-ammount&#39;</span><span class="p">)]</span>
+    <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">docs</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>Notice how the formatting in this function matches the JSON data I showed you earlier.  We can use <code>req.param</code> and the name from our form to get each of the values and put them into the proper format.  After the save function returns, it redirects us back to the index page (using a GET) and renders our new recipe in the table.</p>
+<h2 id="interacting-with-the-database">Interacting with the database</h2>
+<p>Before our index and new recipe pages will work, we must write the two methods getAll and Save to work with MongoDB.  These will be kept in the recipeProvider.js file in the top level of your directory.  To get the two pages working, we will need two methods for getting a collection</p>
+<div class="highlight"><pre><span class="c1">// internal functions use to get a collection from the database</span>
+<span class="nx">RecipeProvider</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getCollection</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">collection</span><span class="p">(</span><span class="s1">&#39;recipes&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">recipe_collection</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">callback</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+        <span class="k">else</span> <span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">recipe_collection</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="c1">// get all the recipes in the database</span>
+<span class="nx">RecipeProvider</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">findAll</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">getCollection</span><span class="p">(</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">recipe_collection</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">callback</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">{</span>
+            <span class="nx">recipe_collection</span><span class="p">.</span><span class="nx">find</span><span class="p">().</span><span class="nx">toArray</span><span class="p">(</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">results</span><span class="p">){</span>
+                <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">callback</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+                <span class="k">else</span> <span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">results</span><span class="p">)</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="nx">RecipeProvider</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">save</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">recipes</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">getCollection</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">recipe_collection</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span><span class="p">(</span> <span class="nx">error</span> <span class="p">)</span> <span class="nx">callback</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+      <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">recipe_collection</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">recipes</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">recipes</span><span class="p">);</span>
+        <span class="p">});</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>Just a note about the terminology used with MongoDB since it differs from SQL:  tables are called collections and rows are called documents.</p>
+<p>Before using any of the methods, we need to get the collection using <code>getCollection()</code>.  This returns a collection instance with the name "recipes".  In the findAll function, we get the collection and then use the <code>find()</code> method to return all documents in the collection. Now that we have our recipes in an array, we return the recipe array (called results) to the calling function, which is this case is findAll() funciton that renders our index page back in the app.js file.</p>
+<div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
+    <span class="nx">recipeProvider</span><span class="p">.</span><span class="nx">findAll</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">recip</span><span class="p">){</span>
+</pre></div>
+
+
+<p>We then send the results to the index page, which is now an array called "recipes".  Hopefull your index.jade file will start to make a bit more sense now.  Take a look at the lines below.  Now that the recipes are sent to the index file, we can display the values using:</p>
+<div class="highlight"><pre>recipe.title
+recipe.name
+</pre></div>
+
+
+<p>And we can loop through the enteries in the recipe array using:</p>
+<div class="highlight"><pre><span class="o">-</span> <span class="nx">each</span> <span class="nx">recipe</span> <span class="k">in</span> <span class="nx">recipes</span>
+</pre></div>
+
+
+<p>Another important thing to pay attention to in the index file is the line</p>
+<div class="highlight"><pre><span class="nx">input</span><span class="p">(</span><span class="nx">name</span><span class="o">=</span><span class="s2">&quot;_id&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;hidden&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="o">=</span><span class="nx">recipe</span><span class="p">.</span><span class="nx">_id</span><span class="p">.</span><span class="nx">toHexString</span><span class="p">())</span> 
+</pre></div>
+
+
+<p>Since we are going to have buttons for editing and deleting a single recipe, we need a way to store its id.  By setting the value of a hidden input to store the id, we can pass it using a POST request. </p>
+<p><strong>Adding new entries</strong></p>
+<p>Now we still need to add some recipes to the database, so let's write function to handle that.  Take a look above at the <code>RecipeProvider.prototype.save()</code> function.  Remember that this function is going to be called by the functoin <code>app.post('/recipe/new'</code> in the app.js file.  This was the function above in the "setting up routes" section where we built our JSON data to send to the database.  This is where all that hard work is going to pay off.  We just need to pass the JSON data to the <code>insert()</code> method and our new recipe is stored.</p>
+<p>If you start up your page again (Note: don't forget to restart Node after changing any js files) and this time click on the link to add a new recipe you should get this page:</p>
+<p><img alt="screen3" src="images/node/screen3.png" /></p>
+<p>We can finish off the site by adding in the routes for the edit and delete buttons on the index page.  When we click on the delete (X) button on the front page, it will make a POST request to /recipe/:id/delete.  The name of the address isn't really important since we won't even be rendering this page.</p>
+<div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/recipe/:id/delete&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
+    <span class="nx">recipeProvider</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">param</span><span class="p">(</span><span class="s1">&#39;_id&#39;</span><span class="p">),</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">docs</span><span class="p">){</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>Instead, with this route we will call the delete method from the recipeProvider.js file passing it the id of the document we want to remove.  Our callback is then just a redirect back to the index page.  The rest of the functions and routes are very similar to the ones I've already walked through. so I'll leave those alone.</p>
+<p>Before we finish up, there are a few tricky areas I encountered while working on this project.  Hopefully this tutorial will save you hours of debugging.  The first problem I had was trying to get a single document using the id.</p>
+<div class="highlight"><pre><span class="p">{</span><span class="nx">_id</span><span class="o">:</span> <span class="nx">recipe_collection</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">bson_serializer</span><span class="p">.</span><span class="nx">ObjectID</span><span class="p">.</span><span class="nx">createFromHexString</span><span class="p">(</span><span class="nx">recipeId</span><span class="p">)}</span>
+</pre></div>
+
+
+<p>I assumed that I could just send it the id number and it would find or remove that document, but unfortunatly that wasn't the case.  I'm still not sure what it needed, but I tested it by just passing the id and it does not work this way.</p>
+<p>The next problem I had occurred when searching for documents using the <code>find()</code> function.  An example of this issue can be found in the search function in recipeProvider.js.</p>
+<div class="highlight"><pre><span class="nx">RecipeProvider</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">search</span><span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">searchterm</span><span class="p">,</span> <span class="nx">callback</span><span class="p">){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">getCollection</span><span class="p">(</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">recipe_collection</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">recipe_collection</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="nx">name</span><span class="o">:</span> <span class="nx">searchterm</span><span class="p">}).</span><span class="nx">toArray</span><span class="p">(</span>
+        <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">recipe</span><span class="p">){</span>
+            <span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">recipe</span><span class="p">)</span>
+        <span class="p">});</span> 
+    <span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>I though that find() would return the data in an array or as JSON, but instead it returned a pointer to the location of the results.  You have to actually use the <code>toArray()</code> to move the pointer to the location of the data which is an array.  I finally made this discovery after digging through the <a href="http://docs.mongodb.org/manual/reference/method/cursor.toArray/">API docs</a></p>
+<p>And my last debugging tip:  Don't forget to restart Node after making changes to the javascript files! (that one got me a few times).</p>
+	</div><!-- /.entry-content -->
+	<div class="comments">
+	<h2>Comments !</h2>
+			<div id="disqus_thread"></div>
+			<script type="text/javascript">
+        var disqus_shortname = 'jd-transistorio'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+	</div>
+</article>
+</section>
+				</div>
+				<div class="span3">
+<ul class="nav nav-list well sidebar">
+	<li class="nav-header">
+		<h4>
+			<i class="icon-rss icon-large"></i> 
+			RSS/Atom Feeds
+		</h4>
+	</li>
+	<li>
+		<a href="http://www.transistor.io/feeds/all.atom.xml" rel="alternate">
+		<i class="icon-bookmark icon-large"></i>
+		Atom Feed
+		</a>
+	</li>
+	<li class="nav-header"><h4><i class="icon-external-link"></i>Blogroll</h4></li>
+		<li><a href="http://www.theamphour.com/"><i class="icon-external-link"></i>The Amp Hour</a></li>
+		<li><a href="http://www.hackaday.com"><i class="icon-external-link"></i>Hack A Day</a></li>
+		<li><a href="http://dangerousprototypes.com/"><i class="icon-external-link"></i>Dangerous Prototypes</a></li>
+	<li class="nav-header"><h4><i class="icon-home icon-large"></i> Social</h4></li>
+		<li><a href="http://github.com/jdorweiler"><i class="icon-github icon-large"></i>GitHub</a></li>
+		<li><a href="http://www.linkedin.com/profile/view?id=85206177&trk=nav_responsive_tab_profile_pic"><i class="icon-linkedin icon-large"></i>LinkedIn</a></li>
+		<li><a href="https://twitter.com/jdorw"><i class="icon-twitter icon-large"></i>twitter</a></li>
+	
+	<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+	
+	<li>
+		<a href="http://www.transistor.io/category/chemistry.html">
+		<i class="icon-folder-open icon-large"></i>
+		Chemistry
+		</a>
+	</li>
+	<li>
+		<a href="http://www.transistor.io/category/climbing.html">
+		<i class="icon-folder-open icon-large"></i>
+		Climbing
+		</a>
+	</li>
+	<li>
+		<a href="http://www.transistor.io/category/projects.html">
+		<i class="icon-folder-open icon-large"></i>
+		Projects
+		</a>
+	</li>
+	
+	<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/carbon-fiber.html">
+        <i class="icon-tag icon-large"></i>carbon fiber
+		</a>
+	</li>
+	<li class="tag-3">
+		<a href="http://www.transistor.io/tag/balancing-robot.html">
+        <i class="icon-tag icon-large"></i>balancing robot
+		</a>
+	</li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/arduino.html">
+        <i class="icon-tag icon-large"></i>arduino
+		</a>
+	</li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/electroncis.html">
+        <i class="icon-tag icon-large"></i>electroncis
+		</a>
+	</li>
+	<li class="tag-1">
+		<a href="http://www.transistor.io/tag/robotics.html">
+        <i class="icon-tag icon-large"></i>robotics
+		</a>
+	</li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/biking.html">
+        <i class="icon-tag icon-large"></i>biking
+		</a>
+	</li>
+	<li class="tag-2">
+		<a href="http://www.transistor.io/tag/ros.html">
+        <i class="icon-tag icon-large"></i>ros
+		</a>
+	</li>
+	<li class="tag-3">
+		<a href="http://www.transistor.io/tag/rock-climbing.html">
+        <i class="icon-tag icon-large"></i>rock climbing
+		</a>
+	</li>
+	<li class="tag-3">
+		<a href="http://www.transistor.io/tag/pcb.html">
+        <i class="icon-tag icon-large"></i>PCB
+		</a>
+	</li>
+	<li class="tag-2">
+		<a href="http://www.transistor.io/tag/turtlebot.html">
+        <i class="icon-tag icon-large"></i>turtlebot
+		</a>
+	</li>
+	<li class="tag-2">
+		<a href="http://www.transistor.io/tag/hackaday.html">
+        <i class="icon-tag icon-large"></i>hackaday
+		</a>
+	</li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/chemistry.html">
+        <i class="icon-tag icon-large"></i>chemistry
+		</a>
+	</li>
+	<li class="tag-3">
+		<a href="http://www.transistor.io/tag/roomba.html">
+        <i class="icon-tag icon-large"></i>roomba
+		</a>
+	</li>
+	<li class="tag-2">
+		<a href="http://www.transistor.io/tag/computer-vision.html">
+        <i class="icon-tag icon-large"></i>computer vision
+		</a>
+	</li>
+	<li class="tag-1">
+		<a href="http://www.transistor.io/tag/autonomous-car.html">
+        <i class="icon-tag icon-large"></i>autonomous car
+		</a>
+	</li>
+	<li class="tag-1">
+		<a href="http://www.transistor.io/tag/programming.html">
+        <i class="icon-tag icon-large"></i>programming
+		</a>
+	</li>
+</ul>
+				</div>
+			</div>
+		</div>
+		<div class="span1"></div>
+	</div>
+</div>
+
+<footer class="navbar-fixed-bottom text-center">
+Copyright &copy; 2014 by Jason Dorweiler
+</footer>
+</body>
+</html>

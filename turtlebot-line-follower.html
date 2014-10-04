@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Turtlebot line follower</title>
+	<meta charset="utf-8" />
+	<meta name="author" content="Jason Dorweiler" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- JS Libraries to Load -->
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://www.transistor.io/theme/js/bootstrap.min.js"></script>
+	<script src="http://www.transistor.io/theme/js/progressbars.js"></script>
+	
+	
+	<!-- CSS Styles -->
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/bootstrap.simplex.min.css" type="text/css" />
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/bootstrap-responsive.min.css" type="text/css" />
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/font-awesome.min.css" type="text/css" />
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/main.css" type="text/css">
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/pygment.css" type="text/css">
+	<!--[if IE 7]>
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/font-awesome-ie7.min.css">
+	<![endif]-->
+	
+	<!-- Feed Information / Copied from Simple Theme -->
+	<link href="http://www.transistor.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="transistor.io Full Atom Feed" />
+	<link href="http://www.transistor.io/feeds/Projects.atom.xml" type="application/atom+xml" rel="alternate" title="transistor.io Categories Atom Feed" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41941180-1', 'transistor.io');
+  ga('send', 'pageview');
+
+</script>
+
+<link href="//vjs.zencdn.net/4.4/video-js.css" rel="stylesheet">
+<script src="//vjs.zencdn.net/4.4/video.js"></script>
+<style>
+.video-js {padding-top: 56.25%}
+.vjs-fullscreen {padding-top: 0px}
+</style>
+
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container pull-left offset1">
+			<a class="btn btn-navbar clearfix pull-right" data-target=".navbar-responsive-collapse" data-toggle="collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+			<a class="brand" href="http://www.transistor.io/index.html">transistor.io </a>
+			
+			<div class="nav-collapse collapse navbar-responsive-collapse">
+				<ul class="nav">
+					<li>
+						<a href="http://www.transistor.io/pages/about-me.html"><i class="icon-user" ></i>About me</a>
+					</li>
+					<li class="divider-vertical"></li>
+					<li >
+						<a href="http://www.transistor.io/category/chemistry.html"><i class="icon-folder-open icon-large"></i> Chemistry</a>
+					</li>
+					<li class="divider-vertical"></li>
+					<li >
+						<a href="http://www.transistor.io/category/climbing.html"><i class="icon-folder-open icon-large"></i> Climbing</a>
+					</li>
+					<li class="divider-vertical"></li>
+					<li class="active">
+						<a href="http://www.transistor.io/category/projects.html"><i class="icon-folder-open icon-large"></i> Projects</a>
+					</li>
+					<li class="divider-vertical"></li>
+				<li >
+					<a href="http://www.transistor.io/archives.html"><i class="icon-th-list"></i> Archives</a>
+				</li>
+				
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid" id="content">
+	<div class="row-fluid">
+		<div class="span1"></div>
+		<div class="span10">
+			<div class="row">
+				<div class="offset1 span8">
+<section id="content">
+<article>
+	<header>
+			<h1>
+					<a href=""
+							rel="bookmark"
+							title="Permalink to Turtlebot line follower">
+							Turtlebot line follower
+					</a>
+			</h1>
+	</header>
+	
+	<div class="entry-content">
+	
+	<div class="well">
+<div class="row-fuild">
+	<div class="span6">
+	<span class="label text-center">Date</span>
+	<abbr class="published" title="2013-12-16T00:00:00">
+		<i class="icon-calendar"></i>Mon 16 December 2013
+	</abbr>
+	</div>
+	<div class="span1">&nbsp;</div>
+	<div class="span5">
+		<span class="label text-center">Tags</span>
+			<a href="http://www.transistor.io/tag/robotics.html">robotics</a>
+			<a href="http://www.transistor.io/tag/ros.html">ros</a>
+			<a href="http://www.transistor.io/tag/turtlebot.html">turtlebot</a>
+	</div>
+</div>	</div>
+	<p>from scratch.  So now the turtlebot is running a version of ROS Fuerte and I have the newest verson of ROS Hydro on a virtual box for my workstation.
+I put together a simple line following program to test everything out.  You can follow along to create your own or just grab the completed project
+from my github repo.</p>
+<p>One new thing I ran into is that creating packages with Hydro is a little different than before.  You still use the same arguments but 
+this time create a new package using catkin_create_package.  The package we will make is going to use std_msgs, rospy, and the 
+turtlebot_node.  To do this move into your working directory and run the following</p>
+<pre><code>catkin_create_pkg line_follower std_msgs rospy turtlebot_node</code></pre>
+
+<p>Use roscreate_pkg if you are still on an older version of ROS.  You should have a line_follower directory in you workspace now.  Move to that
+directory and create a nodes folder.  In the nodes folder we will create the actual python program that will run the robot.</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">roslib</span><span class="p">;</span> <span class="n">roslib</span><span class="p">.</span><span class="n">load_manifest</span><span class="p">(</span><span class="err">&#39;</span><span class="n">line_follower</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="n">import</span> <span class="n">rospy</span>
+<span class="n">from</span> <span class="n">geometry_msgs</span><span class="p">.</span><span class="n">msg</span> <span class="n">import</span> <span class="n">Twist</span>
+<span class="n">from</span> <span class="n">turtlebot_node</span><span class="p">.</span><span class="n">msg</span> <span class="n">import</span> <span class="n">TurtlebotSensorState</span>
+
+<span class="cp">#global</span>
+<span class="n">turn</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">def</span> <span class="n">processSensing</span><span class="p">(</span><span class="n">TurtlebotSensorState</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">global</span> <span class="n">turn</span>
+
+    <span class="err">#</span> <span class="n">turn</span> <span class="n">right</span> <span class="k">if</span> <span class="n">we</span> <span class="n">set</span> <span class="n">off</span> <span class="n">the</span> <span class="n">left</span> <span class="n">cliff</span> <span class="n">sensor</span>
+    <span class="k">if</span><span class="p">(</span> <span class="n">TurtlebotSensorState</span><span class="p">.</span><span class="n">cliff_left_signal</span> <span class="o">&gt;</span> <span class="mi">1100</span> <span class="p">)</span><span class="o">:</span>
+                <span class="n">turn</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="err">#</span> <span class="n">turn</span> <span class="n">left</span> <span class="k">if</span> <span class="n">we</span> <span class="n">set</span> <span class="n">off</span> <span class="n">the</span> <span class="n">right</span> <span class="n">cliff</span> <span class="n">sensor</span>
+    <span class="k">if</span><span class="p">(</span> <span class="n">TurtlebotSensorState</span><span class="p">.</span><span class="n">cliff_right_signal</span> <span class="o">&gt;</span> <span class="mi">900</span> <span class="p">)</span><span class="o">:</span>
+                <span class="n">turn</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+
+<span class="n">def</span> <span class="n">run</span><span class="p">()</span><span class="o">:</span>
+
+    <span class="err">#</span> <span class="n">publish</span> <span class="n">twist</span> <span class="n">messages</span> <span class="n">to</span> <span class="o">/</span><span class="n">cmd_vel</span>
+    <span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="p">.</span><span class="n">Publisher</span><span class="p">(</span><span class="err">&#39;</span><span class="o">/</span><span class="n">cmd_vel</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">Twist</span><span class="p">)</span>
+
+    <span class="err">#</span><span class="n">subscribe</span> <span class="n">to</span> <span class="n">the</span> <span class="n">robot</span> <span class="n">sensor</span> <span class="n">state</span>
+    <span class="n">rospy</span><span class="p">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="err">&#39;</span><span class="o">/</span><span class="n">turtlebot_node</span><span class="o">/</span><span class="n">sensor_state</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">TurtlebotSensorState</span><span class="p">,</span> <span class="n">processSensing</span><span class="p">)</span>
+    <span class="n">rospy</span><span class="p">.</span><span class="n">init_node</span><span class="p">(</span><span class="err">&#39;</span><span class="n">Line_Follower</span><span class="err">&#39;</span><span class="p">)</span>
+
+    <span class="n">global</span> <span class="n">turn</span>
+    <span class="n">twist</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span>
+
+    <span class="k">while</span> <span class="n">not</span> <span class="n">rospy</span><span class="p">.</span><span class="n">is_shutdown</span><span class="p">()</span><span class="o">:</span>
+
+        <span class="err">#</span> <span class="n">turn</span> <span class="k">if</span> <span class="n">we</span> <span class="n">hit</span> <span class="n">the</span> <span class="n">line</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="n">turn</span> <span class="o">!=</span> <span class="mf">0.0</span> <span class="p">)</span><span class="o">:</span>
+            <span class="n">str</span> <span class="o">=</span> <span class="s">&quot;Turning %s&quot;</span><span class="o">%</span><span class="n">turn</span>
+            <span class="n">rospy</span><span class="p">.</span><span class="n">loginfo</span><span class="p">(</span><span class="n">str</span><span class="p">)</span>
+            <span class="n">twist</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">;</span> <span class="n">twist</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">twist</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">twist</span><span class="p">.</span><span class="n">angular</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">twist</span><span class="p">.</span><span class="n">angular</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">twist</span><span class="p">.</span><span class="n">angular</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">turn</span>
+            <span class="n">turn</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+            <span class="err">#</span> <span class="n">straight</span> <span class="n">otherwise</span>
+        <span class="nl">else:</span>
+            <span class="n">str</span> <span class="o">=</span> <span class="s">&quot;Straight %s&quot;</span><span class="o">%</span><span class="n">turn</span>
+            <span class="n">rospy</span><span class="p">.</span><span class="n">loginfo</span><span class="p">(</span><span class="n">str</span><span class="p">)</span>
+            <span class="n">twist</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">;</span> <span class="n">twist</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">twist</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">twist</span><span class="p">.</span><span class="n">angular</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">twist</span><span class="p">.</span><span class="n">angular</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">twist</span><span class="p">.</span><span class="n">angular</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="err">#</span> <span class="n">send</span> <span class="n">the</span> <span class="n">message</span> <span class="n">and</span> <span class="n">delay</span>
+        <span class="n">pub</span><span class="p">.</span><span class="n">publish</span><span class="p">(</span><span class="n">twist</span><span class="p">)</span>
+        <span class="n">rospy</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="err">&#39;</span><span class="n">__main__</span><span class="err">&#39;</span><span class="o">:</span>
+    <span class="nl">try:</span>
+        <span class="n">run</span><span class="p">()</span>
+    <span class="n">except</span> <span class="n">rospy</span><span class="p">.</span><span class="n">ROSInterruptException</span><span class="o">:</span> <span class="n">pass</span>
+</pre></div>
+
+
+<p>It's pretty simple but here's a quick rundown of how it works.  First we need the standard
+line of imports.  Be sure to include the twist to send commands to the robot and the robot's 
+sensor state which we will use to read the IR cliff sensors. </p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">roslib</span><span class="p">;</span> <span class="n">roslib</span><span class="p">.</span><span class="n">load_manifest</span><span class="p">(</span><span class="err">&#39;</span><span class="n">line_follower</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="n">import</span> <span class="n">rospy</span>
+<span class="n">from</span> <span class="n">geometry_msgs</span><span class="p">.</span><span class="n">msg</span> <span class="n">import</span> <span class="n">Twist</span>
+<span class="n">from</span> <span class="n">turtlebot_node</span><span class="p">.</span><span class="n">msg</span> <span class="n">import</span> <span class="n">TurtlebotSensorState</span>
+</pre></div>
+
+
+<p>Then we declare a global variable called "turn".  This will store the angular rate that we
+want the robot to turn at.  </p>
+<p>The processSensing function checks the left and right cliff sensors against a calibrated number. 
+This just sets the turning variable to a positive or negative number based on which cliff sensor
+is being triggered. </p>
+<div class="highlight"><pre><span class="n">def</span> <span class="n">processSensing</span><span class="p">(</span><span class="n">TurtlebotSensorState</span><span class="p">)</span><span class="o">:</span>
+<span class="n">global</span> <span class="n">turn</span>
+
+    <span class="err">#</span> <span class="n">turn</span> <span class="n">right</span> <span class="k">if</span> <span class="n">we</span> <span class="n">set</span> <span class="n">off</span> <span class="n">the</span> <span class="n">left</span> <span class="n">cliff</span> <span class="n">sensor</span>
+<span class="k">if</span><span class="p">(</span> <span class="n">TurtlebotSensorState</span><span class="p">.</span><span class="n">cliff_left_signal</span> <span class="o">&gt;</span> <span class="mi">1100</span> <span class="p">)</span><span class="o">:</span>
+            <span class="n">turn</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="err">#</span> <span class="n">turn</span> <span class="n">left</span> <span class="k">if</span> <span class="n">we</span> <span class="n">set</span> <span class="n">off</span> <span class="n">the</span> <span class="n">right</span> <span class="n">cliff</span> <span class="n">sensor</span>
+<span class="k">if</span><span class="p">(</span> <span class="n">TurtlebotSensorState</span><span class="p">.</span><span class="n">cliff_right_signal</span> <span class="o">&gt;</span> <span class="mi">900</span> <span class="p">)</span><span class="o">:</span>
+            <span class="n">turn</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+</pre></div>
+
+
+<p>To get correct value you will have to experiment with the sensors to see what values it give on 
+a carpet or tape surface. To check your sensor values you can use rostopic.  In a terminal window first check to see that the robot
+is running by checking </p>
+<div class="highlight"><pre><span class="n">rostopic</span> <span class="n">list</span>
+</pre></div>
+
+
+<p>You should see topics from turtlebot_node in there.  After that you can see the sensor states for the robot 
+by running </p>
+<div class="highlight"><pre><span class="n">rostopic</span> <span class="n">list</span> <span class="n">echo</span> <span class="o">/</span><span class="n">turtlebot_node</span><span class="o">/</span><span class="n">TurtlebotSensorState</span>
+</pre></div>
+
+
+<p>In the sensor state output look for values for the left and right cliff sensors.  Then put the robot on different surfaces
+and note the change in values.  Once we use the processSensing function to check our cliff sensor values and set the appropriate turning value we can actually send the twist message. </p>
+<div class="highlight"><pre><span class="k">if</span> <span class="p">(</span> <span class="n">turn</span> <span class="o">!=</span> <span class="mf">0.0</span> <span class="p">)</span><span class="o">:</span>
+    <span class="n">str</span> <span class="o">=</span> <span class="s">&quot;Turning %s&quot;</span><span class="o">%</span><span class="n">turn</span>
+    <span class="n">rospy</span><span class="p">.</span><span class="n">loginfo</span><span class="p">(</span><span class="n">str</span><span class="p">)</span>
+    <span class="n">twist</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">;</span> <span class="n">twist</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">twist</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">twist</span><span class="p">.</span><span class="n">angular</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">twist</span><span class="p">.</span><span class="n">angular</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">twist</span><span class="p">.</span><span class="n">angular</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">turn</span>
+    <span class="n">turn</span> <span class="o">=</span> <span class="mf">0.0</span>
+</pre></div>
+
+
+<p>This sends the robot a linear twist message or 0.2 and an angular twist based on the turn variable we set earlier.</p>
+<p>Here's the final program in action</p>
+<iframe width="420" height="315" src="//www.youtube.com/embed/sCZsQ8SJDBI" frameborder="0" allowfullscreen></iframe>
+	</div><!-- /.entry-content -->
+	<div class="comments">
+	<h2>Comments !</h2>
+			<div id="disqus_thread"></div>
+			<script type="text/javascript">
+        var disqus_shortname = 'jd-transistorio'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+	</div>
+</article>
+</section>
+				</div>
+				<div class="span3">
+<ul class="nav nav-list well sidebar">
+	<li class="nav-header">
+		<h4>
+			<i class="icon-rss icon-large"></i> 
+			RSS/Atom Feeds
+		</h4>
+	</li>
+	<li>
+		<a href="http://www.transistor.io/feeds/all.atom.xml" rel="alternate">
+		<i class="icon-bookmark icon-large"></i>
+		Atom Feed
+		</a>
+	</li>
+	<li class="nav-header"><h4><i class="icon-external-link"></i>Blogroll</h4></li>
+		<li><a href="http://www.theamphour.com/"><i class="icon-external-link"></i>The Amp Hour</a></li>
+		<li><a href="http://www.hackaday.com"><i class="icon-external-link"></i>Hack A Day</a></li>
+		<li><a href="http://dangerousprototypes.com/"><i class="icon-external-link"></i>Dangerous Prototypes</a></li>
+	<li class="nav-header"><h4><i class="icon-home icon-large"></i> Social</h4></li>
+		<li><a href="http://github.com/jdorweiler"><i class="icon-github icon-large"></i>GitHub</a></li>
+		<li><a href="http://www.linkedin.com/profile/view?id=85206177&trk=nav_responsive_tab_profile_pic"><i class="icon-linkedin icon-large"></i>LinkedIn</a></li>
+		<li><a href="https://twitter.com/jdorw"><i class="icon-twitter icon-large"></i>twitter</a></li>
+	
+	<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+	
+	<li>
+		<a href="http://www.transistor.io/category/chemistry.html">
+		<i class="icon-folder-open icon-large"></i>
+		Chemistry
+		</a>
+	</li>
+	<li>
+		<a href="http://www.transistor.io/category/climbing.html">
+		<i class="icon-folder-open icon-large"></i>
+		Climbing
+		</a>
+	</li>
+	<li>
+		<a href="http://www.transistor.io/category/projects.html">
+		<i class="icon-folder-open icon-large"></i>
+		Projects
+		</a>
+	</li>
+	
+	<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/carbon-fiber.html">
+        <i class="icon-tag icon-large"></i>carbon fiber
+		</a>
+	</li>
+	<li class="tag-3">
+		<a href="http://www.transistor.io/tag/balancing-robot.html">
+        <i class="icon-tag icon-large"></i>balancing robot
+		</a>
+	</li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/arduino.html">
+        <i class="icon-tag icon-large"></i>arduino
+		</a>
+	</li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/electroncis.html">
+        <i class="icon-tag icon-large"></i>electroncis
+		</a>
+	</li>
+	<li class="tag-1">
+		<a href="http://www.transistor.io/tag/robotics.html">
+        <i class="icon-tag icon-large"></i>robotics
+		</a>
+	</li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/biking.html">
+        <i class="icon-tag icon-large"></i>biking
+		</a>
+	</li>
+	<li class="tag-2">
+		<a href="http://www.transistor.io/tag/ros.html">
+        <i class="icon-tag icon-large"></i>ros
+		</a>
+	</li>
+	<li class="tag-3">
+		<a href="http://www.transistor.io/tag/rock-climbing.html">
+        <i class="icon-tag icon-large"></i>rock climbing
+		</a>
+	</li>
+	<li class="tag-3">
+		<a href="http://www.transistor.io/tag/pcb.html">
+        <i class="icon-tag icon-large"></i>PCB
+		</a>
+	</li>
+	<li class="tag-2">
+		<a href="http://www.transistor.io/tag/turtlebot.html">
+        <i class="icon-tag icon-large"></i>turtlebot
+		</a>
+	</li>
+	<li class="tag-2">
+		<a href="http://www.transistor.io/tag/hackaday.html">
+        <i class="icon-tag icon-large"></i>hackaday
+		</a>
+	</li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/chemistry.html">
+        <i class="icon-tag icon-large"></i>chemistry
+		</a>
+	</li>
+	<li class="tag-3">
+		<a href="http://www.transistor.io/tag/roomba.html">
+        <i class="icon-tag icon-large"></i>roomba
+		</a>
+	</li>
+	<li class="tag-2">
+		<a href="http://www.transistor.io/tag/computer-vision.html">
+        <i class="icon-tag icon-large"></i>computer vision
+		</a>
+	</li>
+	<li class="tag-1">
+		<a href="http://www.transistor.io/tag/autonomous-car.html">
+        <i class="icon-tag icon-large"></i>autonomous car
+		</a>
+	</li>
+	<li class="tag-1">
+		<a href="http://www.transistor.io/tag/programming.html">
+        <i class="icon-tag icon-large"></i>programming
+		</a>
+	</li>
+</ul>
+				</div>
+			</div>
+		</div>
+		<div class="span1"></div>
+	</div>
+</div>
+
+<footer class="navbar-fixed-bottom text-center">
+Copyright &copy; 2014 by Jason Dorweiler
+</footer>
+</body>
+</html>

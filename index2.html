@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>transistor.io</title>
+	<meta charset="utf-8" />
+	<meta name="author" content="Jason Dorweiler" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- JS Libraries to Load -->
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://www.transistor.io/theme/js/bootstrap.min.js"></script>
+	<script src="http://www.transistor.io/theme/js/progressbars.js"></script>
+	
+	
+	<!-- CSS Styles -->
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/bootstrap.simplex.min.css" type="text/css" />
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/bootstrap-responsive.min.css" type="text/css" />
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/font-awesome.min.css" type="text/css" />
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/main.css" type="text/css">
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/pygment.css" type="text/css">
+	<!--[if IE 7]>
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/font-awesome-ie7.min.css">
+	<![endif]-->
+	
+	<!-- Feed Information / Copied from Simple Theme -->
+	<link href="http://www.transistor.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="transistor.io Full Atom Feed" />
+	<link href="http://www.transistor.io/feeds/.atom.xml" type="application/atom+xml" rel="alternate" title="transistor.io Categories Atom Feed" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41941180-1', 'transistor.io');
+  ga('send', 'pageview');
+
+</script>
+
+<link href="//vjs.zencdn.net/4.4/video-js.css" rel="stylesheet">
+<script src="//vjs.zencdn.net/4.4/video.js"></script>
+<style>
+.video-js {padding-top: 56.25%}
+.vjs-fullscreen {padding-top: 0px}
+</style>
+
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container pull-left offset1">
+			<a class="btn btn-navbar clearfix pull-right" data-target=".navbar-responsive-collapse" data-toggle="collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+			<a class="brand" href="http://www.transistor.io/index.html">transistor.io </a>
+			
+			<div class="nav-collapse collapse navbar-responsive-collapse">
+				<ul class="nav">
+					<li>
+						<a href="http://www.transistor.io/pages/about-me.html"><i class="icon-user" ></i>About me</a>
+					</li>
+					<li class="divider-vertical"></li>
+					<li >
+						<a href="http://www.transistor.io/category/chemistry.html"><i class="icon-folder-open icon-large"></i> Chemistry</a>
+					</li>
+					<li class="divider-vertical"></li>
+					<li >
+						<a href="http://www.transistor.io/category/climbing.html"><i class="icon-folder-open icon-large"></i> Climbing</a>
+					</li>
+					<li class="divider-vertical"></li>
+					<li >
+						<a href="http://www.transistor.io/category/projects.html"><i class="icon-folder-open icon-large"></i> Projects</a>
+					</li>
+					<li class="divider-vertical"></li>
+				<li >
+					<a href="http://www.transistor.io/archives.html"><i class="icon-th-list"></i> Archives</a>
+				</li>
+				
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid" id="content">
+	<div class="row-fluid">
+		<div class="span1"></div>
+		<div class="span10">
+			<div class="row">
+				<div class="offset1 span8">
+<!-- If we have articles to display -->
+	<!-- Iterate through the articles in the page -->
+		<div class="article">
+			<h1><a href="http://www.transistor.io/autonomous-car-summary.html">Autonomous Car Summary</a></h1>
+			<div class="well small"><div class="row-fuild">
+	<div class="span6">
+	<span class="label text-center">Date</span>
+	<abbr class="published" title="2013-06-23T00:00:00">
+		<i class="icon-calendar"></i>Sun 23 June 2013
+	</abbr>
+	</div>
+	<div class="span1">&nbsp;</div>
+	<div class="span5">
+		<span class="label text-center">Tags</span>
+			<a href="http://www.transistor.io/tag/robotics.html">robotics</a>
+			<a href="http://www.transistor.io/tag/programming.html">programming</a>
+			<a href="http://www.transistor.io/tag/autonomous-car.html">autonomous car</a>
+	</div>
+</div></div>
+			<div class="summary">
+				<p>The information for my autonomous car project is starting to get a bit spread out between all the update posts, so I though making a nice summary was in order.
+<br>
+<br>
+<div class="row">
+<div class="span1">
+</div>
+<div class="span5">
+<img alt="finalcar" src="images/car/finalcar.png" />
+yes my workbench is a mess
+</div>
+</div>
+<br> </p>
+<ul>
+<li><a href="http://jdorweiler.github.io/autonomous-car-pt1.html" target="_blank"><h4>Part 1</h4></a></li>
+</ul>
+<p>In part 1, I laid out my plans for the navigation algorithm and spent some time working on the computer vision part of the project.  I was looking at sending an unboard camera image from my Android phone to a laptop to do some lane detection.  The large variation between different roads posed a problem.  I did get the algorithm to work pretty well with a perfect-looking road.  There were also some issues with lag between sending the image, processing, and sending it back.</p>
+<ul>
+<li><a <a href="http://www.transistor.io/autonomous-car-summary.html">...</a>
+			</div>
+		</div>
+		<hr />
+		<div class="article">
+			<h1><a href="http://www.transistor.io/python-asteroids-game.html">Python Asteroids Game</a></h1>
+			<div class="well small"><div class="row-fuild">
+	<div class="span6">
+	<span class="label text-center">Date</span>
+	<abbr class="published" title="2013-06-22T00:00:00">
+		<i class="icon-calendar"></i>Sat 22 June 2013
+	</abbr>
+	</div>
+	<div class="span1">&nbsp;</div>
+	<div class="span5">
+		<span class="label text-center">Tags</span>
+			<a href="http://www.transistor.io/tag/programming.html">programming</a>
+	</div>
+</div></div>
+			<div class="summary">
+				<p>This is the final project for the <a href="https://class.coursera.org/interactivepython-002/class/index">Interactive Python course</a>. 
+The game runs from the browser using the SimpleGUI plugin.  It works best on Google Chrome. 
+Here's a link to the <a href="http://www.codeskulptor.org/#user16_mp0Icyz9R0_15.py">Asteroids Game</a></p>
+<iframe src="http://pastebin.com/embed_iframe.php?i=cFcA3S3D" style="border:none;width:100%;height:200px;"></iframe>
+			</div>
+		</div>
+		<hr />
+		<div class="article">
+			<h1><a href="http://www.transistor.io/autonomous-car-on-hackadaycom.html">Autonomous Car on HackADay.com</a></h1>
+			<div class="well small"><div class="row-fuild">
+	<div class="span6">
+	<span class="label text-center">Date</span>
+	<abbr class="published" title="2013-06-16T00:00:00">
+		<i class="icon-calendar"></i>Sun 16 June 2013
+	</abbr>
+	</div>
+	<div class="span1">&nbsp;</div>
+	<div class="span5">
+		<span class="label text-center">Tags</span>
+			<a href="http://www.transistor.io/tag/autonomous-car.html">autonomous car</a>
+			<a href="http://www.transistor.io/tag/robotics.html">robotics</a>
+			<a href="http://www.transistor.io/tag/hackaday.html">hackaday</a>
+	</div>
+</div></div>
+			<div class="summary">
+				<p><img alt="" src="images/car/hackaday.png" /></p>
+<p>My Autonomous car project is all over the internet 
+* <a href="http://hackaday.com/2013/06/16/autonomous-rc-car-navigates-by-waypoints/">Hackaday</a></p>
+<ul>
+<li>
+<p><a href="http://dangerousprototypes.com/2013/06/18/autonomous-car-build/">Dangerous Protoypes</a> </p>
+</li>
+<li>
+<p><a href="http://hackedgadgets.com/2013/06/17/autonomous-car-build//">Hacked Gadgets</a></p>
+</li>
+</ul>
+			</div>
+		</div>
+		<hr />
+		<div class="article">
+			<h1><a href="http://www.transistor.io/autonomous-car-in-design-contest.html">Autonomous Car in Design Contest</a></h1>
+			<div class="well small"><div class="row-fuild">
+	<div class="span6">
+	<span class="label text-center">Date</span>
+	<abbr class="published" title="2013-06-14T00:00:00">
+		<i class="icon-calendar"></i>Fri 14 June 2013
+	</abbr>
+	</div>
+	<div class="span1">&nbsp;</div>
+	<div class="span5">
+		<span class="label text-center">Tags</span>
+			<a href="http://www.transistor.io/tag/robotics.html">robotics</a>
+			<a href="http://www.transistor.io/tag/programming.html">programming</a>
+			<a href="http://www.transistor.io/tag/autonomous-car.html">autonomous car</a>
+	</div>
+</div></div>
+			<div class="summary">
+				<p>I entered my autonomous car into a design contest held by the makers of the ChipKit board that I used. Here's the video I used for my entry.</p>
+<p><br>
+<div class="row">
+<div class="span2">
+</div>
+<div class="span8">
+<iframe width="560" height="315" src="http://www.youtube.com/embed/05YKrlu1n3M" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<br>
+<br>
+To help explain the car's navigation algorithm I made a flow chart that shows how each part of the algorithm interacts with the sensors (click for a larger image). 
+<br>
+<br>
+<div class="row">
+<div class="span2">
+</div>
+<div class="span8">
+<a href="https://raw.github.com/jdorweiler/Autonomous-Car/master/Program%20Flow%20Diagram.png"><img alt="alt text" src="images/car/ProgramFlowDiagram.png" /></a>
+</div>
+</div></p>
+			</div>
+		</div>
+		<hr />
+		<div class="article">
+			<h1><a href="http://www.transistor.io/ros-on-a-roomba.html">ROS on a Roomba</a></h1>
+			<div class="well small"><div class="row-fuild">
+	<div class="span6">
+	<span class="label text-center">Date</span>
+	<abbr class="published" title="2013-06-05T00:00:00">
+		<i class="icon-calendar"></i>Wed 05 June 2013
+	</abbr>
+	</div>
+	<div class="span1">&nbsp;</div>
+	<div class="span5">
+		<span class="label text-center">Tags</span>
+			<a href="http://www.transistor.io/tag/robotics.html">robotics</a>
+			<a href="http://www.transistor.io/tag/ros.html">ros</a>
+			<a href="http://www.transistor.io/tag/computer-vision.html">computer vision</a>
+			<a href="http://www.transistor.io/tag/turtlebot.html">turtlebot</a>
+	</div>
+</div></div>
+			<div class="summary">
+				<p><img alt="" src="images/roomba/title.png" /></p>
+<p>I came across an unused iRobot Roomba at <a href="http://www.fubarlabs.org">FUBAR labs</a> and though this would be 
+the perfect opportunity to build a robot using the Robotic Operating System <a href="http://www.wikipedia.org/wiki/ROS_%28Robot_Operating_System%29">(ROS)</a>.  ROS is basically software that's used integrate all a robot's sensors (encoders, depth camera, laser scanner ect..) with the code that's used to control it.  All of the sensors run as a node.  For example, the Kinect
+sensor node publishes its depth data.  The SLAM (localization and mapping) node will uses the Kinect data to determine the 
+robot's location and publish to other nodes.  Each node is separate from the others so it's easy to change or add new ones.
+ROS also has a ton of built in <a href="http://www.ros.org/wiki/Sensors">libraries</a> that work with different servos, laser scanners, and other sensors.  </p>
+<p>The Roomba is essentially the same <a href="http://www.transistor.io/ros-on-a-roomba.html">...</a>
+			</div>
+		</div>
+		<hr />
+		<div class="article">
+			<h1><a href="http://www.transistor.io/autonomous-car-pt4.html">Autonomous Car pt.4</a></h1>
+			<div class="well small"><div class="row-fuild">
+	<div class="span6">
+	<span class="label text-center">Date</span>
+	<abbr class="published" title="2013-05-12T00:00:00">
+		<i class="icon-calendar"></i>Sun 12 May 2013
+	</abbr>
+	</div>
+	<div class="span1">&nbsp;</div>
+	<div class="span5">
+		<span class="label text-center">Tags</span>
+			<a href="http://www.transistor.io/tag/robotics.html">robotics</a>
+			<a href="http://www.transistor.io/tag/programming.html">programming</a>
+			<a href="http://www.transistor.io/tag/autonomous-car.html">autonomous car</a>
+	</div>
+</div></div>
+			<div class="summary">
+				<H3>It finally drives!</H3>
+
+<p>I've done a lot more work on the code for the autonomous car. I played around with running
+the GPS heading updates through a FIFO array to try and smooth out any irregular data before
+sending it to the Kalman filter. I was a bit worried that this would slow down the heading
+updates too much, and it did. It evens out the data, but also causes a significant lag, making the
+car pretty much undriveable. I commented out the FIFO code, but left it in there in case anyone
+finds a use for it later on. You can find the latest version of my navigation code on my <a href="https://github.com/jdorweiler/Autonomous-Car" target="_blank">Github page</a>.</p>
+<p>I started playing around with the core timer on the PIC micro. Right now I'm using the core timer
+to change the update rate for the SD logger and the LCD screen. Previously, both of them were
+updating every time through the control loop. With the control loop running at around 50Hz,
+it produces a ton of data. <a href="http://www.transistor.io/autonomous-car-pt4.html">...</a>
+			</div>
+		</div>
+		<hr />
+		<div class="article">
+			<h1><a href="http://www.transistor.io/hacked-roomba-motors-and-related-robots.html">Hacked Roomba Motors and Related Robots</a></h1>
+			<div class="well small"><div class="row-fuild">
+	<div class="span6">
+	<span class="label text-center">Date</span>
+	<abbr class="published" title="2013-04-27T00:00:00">
+		<i class="icon-calendar"></i>Sat 27 April 2013
+	</abbr>
+	</div>
+	<div class="span1">&nbsp;</div>
+	<div class="span5">
+		<span class="label text-center">Tags</span>
+			<a href="http://www.transistor.io/tag/robotics.html">robotics</a>
+			<a href="http://www.transistor.io/tag/roomba.html">roomba</a>
+	</div>
+</div></div>
+			<div class="summary">
+				<p>I acquired a broken 5XX series iRobot Roomba courtesy of <a href="https://www.fubarlabs.org">FUBAR Labs</a> and decided to tear it apart to see what useful parts I could harvest.  I ended up with many IR emitters/receivers, power FETs with heatsinks, but the biggest surprise was the motors.  I expected to get some relativly low cost motors with an equally cheap encoder.  Instead, I got two nice geared motors with digital encoders!</p>
+<p><br>
+<div class="row">
+<div class="span2">
+</div>
+<div class="span8">
+<iframe width="420" height="315" src="http://www.youtube.com/embed/2D0yhQgylkw" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<br>
+<br></p>
+<p>Some tests with the motors showed that they were geared 1:64 and ~90rpm at 12V.  The motor has a radial magnet hall effect encoder with 8-bit resolution (265 ticks).  In the video, I am using an arduino to count encoder ticks with a rising interrupt and PID control to make to motor turn one revolution.  The scope is showing the <a href="http://www.transistor.io/hacked-roomba-motors-and-related-robots.html">...</a>
+			</div>
+		</div>
+		<hr />
+
+	<div class="pagination pagination-centered">
+	<ul>
+		
+			<!-- Enable the prev button? -->
+			<li class="prev"><a href="http://www.transistor.io/index.html">&laquo; Prev</a></li>
+			<li class=""><a href="http://www.transistor.io/index.html">1</a></li>
+			<li class="active"><a href="http://www.transistor.io/index2.html">2</a></li>
+			<li class=""><a href="http://www.transistor.io/index3.html">3</a></li>
+			<li class=""><a href="http://www.transistor.io/index4.html">4</a></li>
+			<li class="next"><a href="http://www.transistor.io/index3.html">Next &raquo;</a></li>
+	</ul>
+	</div>
+
+				</div>
+				<div class="span3">
+<ul class="nav nav-list well sidebar">
+	<li class="nav-header">
+		<h4>
+			<i class="icon-rss icon-large"></i> 
+			RSS/Atom Feeds
+		</h4>
+	</li>
+	<li>
+		<a href="http://www.transistor.io/feeds/all.atom.xml" rel="alternate">
+		<i class="icon-bookmark icon-large"></i>
+		Atom Feed
+		</a>
+	</li>
+	<li class="nav-header"><h4><i class="icon-external-link"></i>Blogroll</h4></li>
+		<li><a href="http://www.theamphour.com/"><i class="icon-external-link"></i>The Amp Hour</a></li>
+		<li><a href="http://www.hackaday.com"><i class="icon-external-link"></i>Hack A Day</a></li>
+		<li><a href="http://dangerousprototypes.com/"><i class="icon-external-link"></i>Dangerous Prototypes</a></li>
+	<li class="nav-header"><h4><i class="icon-home icon-large"></i> Social</h4></li>
+		<li><a href="http://github.com/jdorweiler"><i class="icon-github icon-large"></i>GitHub</a></li>
+		<li><a href="http://www.linkedin.com/profile/view?id=85206177&trk=nav_responsive_tab_profile_pic"><i class="icon-linkedin icon-large"></i>LinkedIn</a></li>
+		<li><a href="https://twitter.com/jdorw"><i class="icon-twitter icon-large"></i>twitter</a></li>
+	
+	<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+	
+	<li>
+		<a href="http://www.transistor.io/category/chemistry.html">
+		<i class="icon-folder-open icon-large"></i>
+		Chemistry
+		</a>
+	</li>
+	<li>
+		<a href="http://www.transistor.io/category/climbing.html">
+		<i class="icon-folder-open icon-large"></i>
+		Climbing
+		</a>
+	</li>
+	<li>
+		<a href="http://www.transistor.io/category/projects.html">
+		<i class="icon-folder-open icon-large"></i>
+		Projects
+		</a>
+	</li>
+	
+	<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/carbon-fiber.html">
+        <i class="icon-tag icon-large"></i>carbon fiber
+		</a>
+	</li>
+	<li class="tag-3">
+		<a href="http://www.transistor.io/tag/balancing-robot.html">
+        <i class="icon-tag icon-large"></i>balancing robot
+		</a>
+	</li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/arduino.html">
+        <i class="icon-tag icon-large"></i>arduino
+		</a>
+	</li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/electroncis.html">
+        <i class="icon-tag icon-large"></i>electroncis
+		</a>
+	</li>
+	<li class="tag-1">
+		<a href="http://www.transistor.io/tag/robotics.html">
+        <i class="icon-tag icon-large"></i>robotics
+		</a>
+	</li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/biking.html">
+        <i class="icon-tag icon-large"></i>biking
+		</a>
+	</li>
+	<li class="tag-2">
+		<a href="http://www.transistor.io/tag/ros.html">
+        <i class="icon-tag icon-large"></i>ros
+		</a>
+	</li>
+	<li class="tag-3">
+		<a href="http://www.transistor.io/tag/rock-climbing.html">
+        <i class="icon-tag icon-large"></i>rock climbing
+		</a>
+	</li>
+	<li class="tag-3">
+		<a href="http://www.transistor.io/tag/pcb.html">
+        <i class="icon-tag icon-large"></i>PCB
+		</a>
+	</li>
+	<li class="tag-2">
+		<a href="http://www.transistor.io/tag/turtlebot.html">
+        <i class="icon-tag icon-large"></i>turtlebot
+		</a>
+	</li>
+	<li class="tag-2">
+		<a href="http://www.transistor.io/tag/hackaday.html">
+        <i class="icon-tag icon-large"></i>hackaday
+		</a>
+	</li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/chemistry.html">
+        <i class="icon-tag icon-large"></i>chemistry
+		</a>
+	</li>
+	<li class="tag-3">
+		<a href="http://www.transistor.io/tag/roomba.html">
+        <i class="icon-tag icon-large"></i>roomba
+		</a>
+	</li>
+	<li class="tag-2">
+		<a href="http://www.transistor.io/tag/computer-vision.html">
+        <i class="icon-tag icon-large"></i>computer vision
+		</a>
+	</li>
+	<li class="tag-1">
+		<a href="http://www.transistor.io/tag/autonomous-car.html">
+        <i class="icon-tag icon-large"></i>autonomous car
+		</a>
+	</li>
+	<li class="tag-1">
+		<a href="http://www.transistor.io/tag/programming.html">
+        <i class="icon-tag icon-large"></i>programming
+		</a>
+	</li>
+</ul>
+				</div>
+			</div>
+		</div>
+		<div class="span1"></div>
+	</div>
+</div>
+
+<footer class="navbar-fixed-bottom text-center">
+Copyright &copy; 2014 by Jason Dorweiler
+</footer>
+</body>
+</html>

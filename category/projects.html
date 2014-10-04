@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>transistor.io - Projects</title>
+	<meta charset="utf-8" />
+	<meta name="author" content="Jason Dorweiler" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- JS Libraries to Load -->
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://www.transistor.io/theme/js/bootstrap.min.js"></script>
+	<script src="http://www.transistor.io/theme/js/progressbars.js"></script>
+	
+	
+	<!-- CSS Styles -->
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/bootstrap.simplex.min.css" type="text/css" />
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/bootstrap-responsive.min.css" type="text/css" />
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/font-awesome.min.css" type="text/css" />
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/main.css" type="text/css">
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/pygment.css" type="text/css">
+	<!--[if IE 7]>
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/font-awesome-ie7.min.css">
+	<![endif]-->
+	
+	<!-- Feed Information / Copied from Simple Theme -->
+	<link href="http://www.transistor.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="transistor.io Full Atom Feed" />
+	<link href="http://www.transistor.io/feeds/Projects.atom.xml" type="application/atom+xml" rel="alternate" title="transistor.io Categories Atom Feed" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41941180-1', 'transistor.io');
+  ga('send', 'pageview');
+
+</script>
+
+<link href="//vjs.zencdn.net/4.4/video-js.css" rel="stylesheet">
+<script src="//vjs.zencdn.net/4.4/video.js"></script>
+<style>
+.video-js {padding-top: 56.25%}
+.vjs-fullscreen {padding-top: 0px}
+</style>
+
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container pull-left offset1">
+			<a class="btn btn-navbar clearfix pull-right" data-target=".navbar-responsive-collapse" data-toggle="collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+			<a class="brand" href="http://www.transistor.io/index.html">transistor.io </a>
+			
+			<div class="nav-collapse collapse navbar-responsive-collapse">
+				<ul class="nav">
+					<li>
+						<a href="http://www.transistor.io/pages/about-me.html"><i class="icon-user" ></i>About me</a>
+					</li>
+					<li class="divider-vertical"></li>
+					<li >
+						<a href="http://www.transistor.io/category/chemistry.html"><i class="icon-folder-open icon-large"></i> Chemistry</a>
+					</li>
+					<li class="divider-vertical"></li>
+					<li >
+						<a href="http://www.transistor.io/category/climbing.html"><i class="icon-folder-open icon-large"></i> Climbing</a>
+					</li>
+					<li class="divider-vertical"></li>
+					<li class="active">
+						<a href="http://www.transistor.io/category/projects.html"><i class="icon-folder-open icon-large"></i> Projects</a>
+					</li>
+					<li class="divider-vertical"></li>
+				<li >
+					<a href="http://www.transistor.io/archives.html"><i class="icon-th-list"></i> Archives</a>
+				</li>
+				
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid" id="content">
+	<div class="row-fluid">
+		<div class="span1"></div>
+		<div class="span10">
+			<div class="row">
+				<div class="offset1 span8">
+<!-- If we have articles to display -->
+	<!-- Iterate through the articles in the page -->
+		<div class="article">
+			<h1><a href="http://www.transistor.io/full-wave-rectifier.html">Full wave rectifier</a></h1>
+			<div class="well small"><div class="row-fuild">
+	<div class="span6">
+	<span class="label text-center">Date</span>
+	<abbr class="published" title="2014-07-27T00:00:00">
+		<i class="icon-calendar"></i>Sun 27 July 2014
+	</abbr>
+	</div>
+	<div class="span1">&nbsp;</div>
+	<div class="span5">
+		<span class="label text-center">Tags</span>
+			<a href="http://www.transistor.io/tag/electroncis.html">electroncis</a>
+	</div>
+</div></div>
+			<div class="summary">
+				<p>I has someone ask me about AC power and how to get a constant DC supply out of it. I though I’d do a quick write up on how a bridge rectifier works and get a little bit more experience modeling circuits in the process. </p>
+<p>For this example I’m showing the full wave rectifier. There’s also something called a half wave rectifier but the idea is essentially the same. The AC supply that comes out of your outlet in your house is 120V and 60Hz (in the US at least). Here’s a graph of what the voltage looks like that looks like over time. The time scale on this graph is 100ms or 0.1sec. </p>
+<p><br>
+<div class="row">
+<div class="span1">
+</div>
+<div class="span6">
+<img alt="bridge" src="images/electronics/bridge3.png" />
+</div>
+</div>
+<br></p>
+<p>This graph shows the voltage varying from +120V to -120V in a sine wave just like it should be. The time between peaks on the graph is 16.66ms which will give you exactly 60 peaks per second (or 60Hz). In order to get a DC voltage from this we <a href="http://www.transistor.io/full-wave-rectifier.html">...</a>
+			</div>
+		</div>
+		<hr />
+		<div class="article">
+			<h1><a href="http://www.transistor.io/getting-started-with-node-express-and-mongodb.html">Getting started with Node, Express, and MongoDB</a></h1>
+			<div class="well small"><div class="row-fuild">
+	<div class="span6">
+	<span class="label text-center">Date</span>
+	<abbr class="published" title="2014-03-28T00:00:00">
+		<i class="icon-calendar"></i>Fri 28 March 2014
+	</abbr>
+	</div>
+</div></div>
+			<div class="summary">
+				<p>For this how-to guide, I decided to look into NodeJS.  I have played around with it before, but this was prior to starting a CS degree, and it went a bit over my head.  I though I would take another look at it and see if I can figure it out after getting a few CS classes under my belt.  I found many to-do lists and chat servers- both of which didn't seem to difficult to create.  I  wanted to complete a more substantial project with potential for future use.  I found a tutorial that uses <a href="http://blog.ijasoneverett.com/2013/03/a-sample-app-with-node-js-express-and-mongodb-part-1/">Node with ExpressJS and MongoDB</a> to create a web page that can interact with an employee database.</p>
+<p>This tutorial is great and well-put together. I got the origional site up very quickly, but as soon as I tried to make changes, it began to fall apart.  I think part of that was just because Javascript is very new to me and I think there is room for a similar tutorial but one that really <a href="http://www.transistor.io/getting-started-with-node-express-and-mongodb.html">...</a>
+			</div>
+		</div>
+		<hr />
+		<div class="article">
+			<h1><a href="http://www.transistor.io/turtlebot-with-voice-control.html">Turtlebot with voice control</a></h1>
+			<div class="well small"><div class="row-fuild">
+	<div class="span6">
+	<span class="label text-center">Date</span>
+	<abbr class="published" title="2014-01-29T00:00:00">
+		<i class="icon-calendar"></i>Wed 29 January 2014
+	</abbr>
+	</div>
+	<div class="span1">&nbsp;</div>
+	<div class="span5">
+		<span class="label text-center">Tags</span>
+			<a href="http://www.transistor.io/tag/ros.html">ros</a>
+			<a href="http://www.transistor.io/tag/robotics.html">robotics</a>
+			<a href="http://www.transistor.io/tag/turtlebot.html">turtlebot</a>
+	</div>
+</div></div>
+			<div class="summary">
+				<p>Here's a short video of my turtlebot responding ot voice commands using the <a href="http://wiki.ros.org/pocketsphinx">Pocketsphinx ROS package</a>.</p>
+<iframe width="560" height="315" src="//www.youtube.com/embed/mDXA0MtXZos" frameborder="0" allowfullscreen></iframe>
+			</div>
+		</div>
+		<hr />
+		<div class="article">
+			<h1><a href="http://www.transistor.io/color-blob-tracking-with-ros.html">Color blob tracking with ROS</a></h1>
+			<div class="well small"><div class="row-fuild">
+	<div class="span6">
+	<span class="label text-center">Date</span>
+	<abbr class="published" title="2013-12-29T00:00:00">
+		<i class="icon-calendar"></i>Sun 29 December 2013
+	</abbr>
+	</div>
+	<div class="span1">&nbsp;</div>
+	<div class="span5">
+		<span class="label text-center">Tags</span>
+			<a href="http://www.transistor.io/tag/ros.html">ros</a>
+			<a href="http://www.transistor.io/tag/robotics.html">robotics</a>
+	</div>
+</div></div>
+			<div class="summary">
+				<p>Here's is short tutorial on how to do colored blob tracking using ROS Hydro and the cmvision package.  This is building on the package that I build in the <a href="http://www.transistor.io/turtlebot-line-follower.html">line follower</a> demo.  Here's a video of the color tracking.</p>
+<iframe width="420" height="315" src="//www.youtube.com/embed/l21KOSKY15Q" frameborder="0" allowfullscreen></iframe>
+
+<p><br></p>
+<p>The first setep is to get the cmvision library.  That will depend on the version of ROS that you are using but for Hydro it's:</p>
+<p><code> sudo apt-get ros-hydro-cmvision </code></p>
+<p>Once you have that installed you need to figure out what color you want to track.  In my case I just used a brightly colored balloon. You get better results using something that will stand out from the rest of the objects in a room.  To find the color to track run: </p>
+<p><code> rosrun cmvision colorgui image:=/camera/rgb/image_color</code> </p>
+<p>You may need to replace the image <a href="http://www.transistor.io/color-blob-tracking-with-ros.html">...</a>
+			</div>
+		</div>
+		<hr />
+		<div class="article">
+			<h1><a href="http://www.transistor.io/turtlebot-line-follower.html">Turtlebot line follower</a></h1>
+			<div class="well small"><div class="row-fuild">
+	<div class="span6">
+	<span class="label text-center">Date</span>
+	<abbr class="published" title="2013-12-16T00:00:00">
+		<i class="icon-calendar"></i>Mon 16 December 2013
+	</abbr>
+	</div>
+	<div class="span1">&nbsp;</div>
+	<div class="span5">
+		<span class="label text-center">Tags</span>
+			<a href="http://www.transistor.io/tag/robotics.html">robotics</a>
+			<a href="http://www.transistor.io/tag/ros.html">ros</a>
+			<a href="http://www.transistor.io/tag/turtlebot.html">turtlebot</a>
+	</div>
+</div></div>
+			<div class="summary">
+				<p>from scratch.  So now the turtlebot is running a version of ROS Fuerte and I have the newest verson of ROS Hydro on a virtual box for my workstation.
+I put together a simple line following program to test everything out.  You can follow along to create your own or just grab the completed project
+from my github repo.</p>
+<p>One new thing I ran into is that creating packages with Hydro is a little different than before.  You still use the same arguments but 
+this time create a new package using catkin_create_package.  The package we will make is going to use std_msgs, rospy, and the 
+turtlebot_node.  To do this move into your working directory and run the following</p>
+<pre><code>catkin_create_pkg line_follower std_msgs rospy turtlebot_node</code></pre>
+
+<p>Use roscreate_pkg if you are still on an older version of ROS.  You should have a line_follower directory in you workspace now.  Move to that
+directory and create a nodes folder.  In the nodes folder we will create the actual <a href="http://www.transistor.io/turtlebot-line-follower.html">...</a>
+			</div>
+		</div>
+		<hr />
+		<div class="article">
+			<h1><a href="http://www.transistor.io/revisiting-lane-detection-using-opencv.html">Revisiting Lane Detection using OpenCV</a></h1>
+			<div class="well small"><div class="row-fuild">
+	<div class="span6">
+	<span class="label text-center">Date</span>
+	<abbr class="published" title="2013-08-16T00:00:00">
+		<i class="icon-calendar"></i>Fri 16 August 2013
+	</abbr>
+	</div>
+	<div class="span1">&nbsp;</div>
+	<div class="span5">
+		<span class="label text-center">Tags</span>
+			<a href="http://www.transistor.io/tag/computer-vision.html">computer vision</a>
+	</div>
+</div></div>
+			<div class="summary">
+				<p>I originally tried to get lane detection working for my <a href="tag/autonomous-car.html">autonomous car</a> project a little over a year ago.  I ended up getting some rough code working but it was really only useful on ideal roads with perfectly painted lines.  At the time I didn't know a whole lot about computer vision so I ended up ditching the computer vision part of the project to focus on other areas. </p>
+<p>So now I'm back with a new project that requires computer vision.  The goal of this new project (which will be another post later on) is to track objects at relatively long distances of 60 meters or more.  The list of off the shelf sensors that can do this is pretty slim with the best being LIDAR sensors that will run you ~$60K.  I plan instead to use a CV algorithm to track objects and a laser range finder on a two axis servo mount to locate objects.  The crux of this project being again the CV algorithm.  To start off I'm getting my feet wet by revisiting the lane <a href="http://www.transistor.io/revisiting-lane-detection-using-opencv.html">...</a>
+			</div>
+		</div>
+		<hr />
+		<div class="article">
+			<h1><a href="http://www.transistor.io/homebuilt-turtlebot.html">Homebuilt Turtlebot</a></h1>
+			<div class="well small"><div class="row-fuild">
+	<div class="span6">
+	<span class="label text-center">Date</span>
+	<abbr class="published" title="2013-06-25T00:00:00">
+		<i class="icon-calendar"></i>Tue 25 June 2013
+	</abbr>
+	</div>
+	<div class="span1">&nbsp;</div>
+	<div class="span5">
+		<span class="label text-center">Tags</span>
+			<a href="http://www.transistor.io/tag/robotics.html">robotics</a>
+			<a href="http://www.transistor.io/tag/roomba.html">roomba</a>
+			<a href="http://www.transistor.io/tag/turtlebot.html">turtlebot</a>
+	</div>
+</div></div>
+			<div class="summary">
+				<p>The bigger and slightly less hacked together brother to my <a href="ros-on-a-roomba.html">Autonomous Roomba</a> is the <a href="http://www.willowgarage.com/turtlebot">Turtlebot</a>.  If you haven't heard of the Turtlebot, just let me say that it is probably the coolest creation of hobby and research robotics.
+<br>
+<div class="row">
+<div class="span1">
+</div>
+<div class="span4">
+<img alt="1st" src="images/turtlebot/turtlebot.png" />
+</div>
+</div>
+<br>
+<br></p>
+<p>The downside is that the ready to go kits are pretty expensive at around $1000, which puts it out of the range for most hobbiests.  If you have been here before, then you know what happened next.  Here's the BOM for my homebuilt turtlebot.  You end up spending a bit more on the mini-ITX board but this board has the advantage of comming with a built in step-up power regulator.  That let's me get away with running it off of an 11.1V LiPo.  Most of the boards I found needed 19V to run which means you would need to spend more <a href="http://www.transistor.io/homebuilt-turtlebot.html">...</a>
+			</div>
+		</div>
+		<hr />
+
+	<div class="pagination pagination-centered">
+	<ul>
+		
+			<li class="prev disabled"><a href="#">&laquo; Prev</a></li>
+			<li class="active"><a href="http://www.transistor.io/category/projects.html">1</a></li>
+			<li class=""><a href="http://www.transistor.io/category/projects2.html">2</a></li>
+			<li class=""><a href="http://www.transistor.io/category/projects3.html">3</a></li>
+			<li class=""><a href="http://www.transistor.io/category/projects4.html">4</a></li>
+			<li class="next"><a href="http://www.transistor.io/category/projects2.html">Next &raquo;</a></li>
+	</ul>
+	</div>
+
+				</div>
+				<div class="span3">
+<ul class="nav nav-list well sidebar">
+	<li class="nav-header">
+		<h4>
+			<i class="icon-rss icon-large"></i> 
+			RSS/Atom Feeds
+		</h4>
+	</li>
+	<li>
+		<a href="http://www.transistor.io/feeds/all.atom.xml" rel="alternate">
+		<i class="icon-bookmark icon-large"></i>
+		Atom Feed
+		</a>
+	</li>
+	<li class="nav-header"><h4><i class="icon-external-link"></i>Blogroll</h4></li>
+		<li><a href="http://www.theamphour.com/"><i class="icon-external-link"></i>The Amp Hour</a></li>
+		<li><a href="http://www.hackaday.com"><i class="icon-external-link"></i>Hack A Day</a></li>
+		<li><a href="http://dangerousprototypes.com/"><i class="icon-external-link"></i>Dangerous Prototypes</a></li>
+	<li class="nav-header"><h4><i class="icon-home icon-large"></i> Social</h4></li>
+		<li><a href="http://github.com/jdorweiler"><i class="icon-github icon-large"></i>GitHub</a></li>
+		<li><a href="http://www.linkedin.com/profile/view?id=85206177&trk=nav_responsive_tab_profile_pic"><i class="icon-linkedin icon-large"></i>LinkedIn</a></li>
+		<li><a href="https://twitter.com/jdorw"><i class="icon-twitter icon-large"></i>twitter</a></li>
+	
+	<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+	
+	<li>
+		<a href="http://www.transistor.io/category/chemistry.html">
+		<i class="icon-folder-open icon-large"></i>
+		Chemistry
+		</a>
+	</li>
+	<li>
+		<a href="http://www.transistor.io/category/climbing.html">
+		<i class="icon-folder-open icon-large"></i>
+		Climbing
+		</a>
+	</li>
+	<li>
+		<a href="http://www.transistor.io/category/projects.html">
+		<i class="icon-folder-open icon-large"></i>
+		Projects
+		</a>
+	</li>
+	
+	<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/carbon-fiber.html">
+        <i class="icon-tag icon-large"></i>carbon fiber
+		</a>
+	</li>
+	<li class="tag-3">
+		<a href="http://www.transistor.io/tag/balancing-robot.html">
+        <i class="icon-tag icon-large"></i>balancing robot
+		</a>
+	</li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/arduino.html">
+        <i class="icon-tag icon-large"></i>arduino
+		</a>
+	</li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/electroncis.html">
+        <i class="icon-tag icon-large"></i>electroncis
+		</a>
+	</li>
+	<li class="tag-1">
+		<a href="http://www.transistor.io/tag/robotics.html">
+        <i class="icon-tag icon-large"></i>robotics
+		</a>
+	</li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/biking.html">
+        <i class="icon-tag icon-large"></i>biking
+		</a>
+	</li>
+	<li class="tag-2">
+		<a href="http://www.transistor.io/tag/ros.html">
+        <i class="icon-tag icon-large"></i>ros
+		</a>
+	</li>
+	<li class="tag-3">
+		<a href="http://www.transistor.io/tag/rock-climbing.html">
+        <i class="icon-tag icon-large"></i>rock climbing
+		</a>
+	</li>
+	<li class="tag-3">
+		<a href="http://www.transistor.io/tag/pcb.html">
+        <i class="icon-tag icon-large"></i>PCB
+		</a>
+	</li>
+	<li class="tag-2">
+		<a href="http://www.transistor.io/tag/turtlebot.html">
+        <i class="icon-tag icon-large"></i>turtlebot
+		</a>
+	</li>
+	<li class="tag-2">
+		<a href="http://www.transistor.io/tag/hackaday.html">
+        <i class="icon-tag icon-large"></i>hackaday
+		</a>
+	</li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/chemistry.html">
+        <i class="icon-tag icon-large"></i>chemistry
+		</a>
+	</li>
+	<li class="tag-3">
+		<a href="http://www.transistor.io/tag/roomba.html">
+        <i class="icon-tag icon-large"></i>roomba
+		</a>
+	</li>
+	<li class="tag-2">
+		<a href="http://www.transistor.io/tag/computer-vision.html">
+        <i class="icon-tag icon-large"></i>computer vision
+		</a>
+	</li>
+	<li class="tag-1">
+		<a href="http://www.transistor.io/tag/autonomous-car.html">
+        <i class="icon-tag icon-large"></i>autonomous car
+		</a>
+	</li>
+	<li class="tag-1">
+		<a href="http://www.transistor.io/tag/programming.html">
+        <i class="icon-tag icon-large"></i>programming
+		</a>
+	</li>
+</ul>
+				</div>
+			</div>
+		</div>
+		<div class="span1"></div>
+	</div>
+</div>
+
+<footer class="navbar-fixed-bottom text-center">
+Copyright &copy; 2014 by Jason Dorweiler
+</footer>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Hacked Roomba Motors and Related Robots</title>
+	<meta charset="utf-8" />
+	<meta name="author" content="Jason Dorweiler" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- JS Libraries to Load -->
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://www.transistor.io/theme/js/bootstrap.min.js"></script>
+	<script src="http://www.transistor.io/theme/js/progressbars.js"></script>
+	
+	
+	<!-- CSS Styles -->
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/bootstrap.simplex.min.css" type="text/css" />
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/bootstrap-responsive.min.css" type="text/css" />
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/font-awesome.min.css" type="text/css" />
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/main.css" type="text/css">
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/pygment.css" type="text/css">
+	<!--[if IE 7]>
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/font-awesome-ie7.min.css">
+	<![endif]-->
+	
+	<!-- Feed Information / Copied from Simple Theme -->
+	<link href="http://www.transistor.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="transistor.io Full Atom Feed" />
+	<link href="http://www.transistor.io/feeds/Projects.atom.xml" type="application/atom+xml" rel="alternate" title="transistor.io Categories Atom Feed" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41941180-1', 'transistor.io');
+  ga('send', 'pageview');
+
+</script>
+
+<link href="//vjs.zencdn.net/4.4/video-js.css" rel="stylesheet">
+<script src="//vjs.zencdn.net/4.4/video.js"></script>
+<style>
+.video-js {padding-top: 56.25%}
+.vjs-fullscreen {padding-top: 0px}
+</style>
+
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container pull-left offset1">
+			<a class="btn btn-navbar clearfix pull-right" data-target=".navbar-responsive-collapse" data-toggle="collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+			<a class="brand" href="http://www.transistor.io/index.html">transistor.io </a>
+			
+			<div class="nav-collapse collapse navbar-responsive-collapse">
+				<ul class="nav">
+					<li>
+						<a href="http://www.transistor.io/pages/about-me.html"><i class="icon-user" ></i>About me</a>
+					</li>
+					<li class="divider-vertical"></li>
+					<li >
+						<a href="http://www.transistor.io/category/chemistry.html"><i class="icon-folder-open icon-large"></i> Chemistry</a>
+					</li>
+					<li class="divider-vertical"></li>
+					<li >
+						<a href="http://www.transistor.io/category/climbing.html"><i class="icon-folder-open icon-large"></i> Climbing</a>
+					</li>
+					<li class="divider-vertical"></li>
+					<li class="active">
+						<a href="http://www.transistor.io/category/projects.html"><i class="icon-folder-open icon-large"></i> Projects</a>
+					</li>
+					<li class="divider-vertical"></li>
+				<li >
+					<a href="http://www.transistor.io/archives.html"><i class="icon-th-list"></i> Archives</a>
+				</li>
+				
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid" id="content">
+	<div class="row-fluid">
+		<div class="span1"></div>
+		<div class="span10">
+			<div class="row">
+				<div class="offset1 span8">
+<section id="content">
+<article>
+	<header>
+			<h1>
+					<a href=""
+							rel="bookmark"
+							title="Permalink to Hacked Roomba Motors and Related Robots">
+							Hacked Roomba Motors and Related Robots
+					</a>
+			</h1>
+	</header>
+	
+	<div class="entry-content">
+	
+	<div class="well">
+<div class="row-fuild">
+	<div class="span6">
+	<span class="label text-center">Date</span>
+	<abbr class="published" title="2013-04-27T00:00:00">
+		<i class="icon-calendar"></i>Sat 27 April 2013
+	</abbr>
+	</div>
+	<div class="span1">&nbsp;</div>
+	<div class="span5">
+		<span class="label text-center">Tags</span>
+			<a href="http://www.transistor.io/tag/robotics.html">robotics</a>
+			<a href="http://www.transistor.io/tag/roomba.html">roomba</a>
+	</div>
+</div>	</div>
+	<p>I acquired a broken 5XX series iRobot Roomba courtesy of <a href="https://www.fubarlabs.org">FUBAR Labs</a> and decided to tear it apart to see what useful parts I could harvest.  I ended up with many IR emitters/receivers, power FETs with heatsinks, but the biggest surprise was the motors.  I expected to get some relativly low cost motors with an equally cheap encoder.  Instead, I got two nice geared motors with digital encoders!</p>
+<p><br>
+<div class="row">
+<div class="span2">
+</div>
+<div class="span8">
+<iframe width="420" height="315" src="http://www.youtube.com/embed/2D0yhQgylkw" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<br>
+<br></p>
+<p>Some tests with the motors showed that they were geared 1:64 and ~90rpm at 12V.  The motor has a radial magnet hall effect encoder with 8-bit resolution (265 ticks).  In the video, I am using an arduino to count encoder ticks with a rising interrupt and PID control to make to motor turn one revolution.  The scope is showing the encoder signal in red and the PWM signal to the H-bridge in yellow. </p>
+<p>Given the price of a busted roomba and all its useful parts, I think these are a great find for a robotists on a budget.</p>
+<h3>Enough talk though, I promised robots</h3>
+
+<p>The first robot is a remake of my <a href="http://jdorweiler.github.io/site2/balancing-robot.html">balancing robot</a>.  The code to run this robot was basically the same as the previous one.  I made a few small changes for it to work with DC motors though.  The yellow frame for the robot is laser cut acrylic that I made on the <a href="https://www.fubarlabs.org">FUBAR Labs</a> laser cutter.  The changes for the code are on my <a href="https://github.com/jdorweiler/BalancingRobotDC">GitHub page</a>.
+<br>
+<br>
+<div class="row">
+<div class="span1">
+</div>
+<div class="span8">
+<iframe width="420" height="315" src="http://www.youtube.com/embed/F3q0O5wcUIk" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<br>
+<br>
+I harvested many IR sensors from the roomba.  The front bumper is one long string of emitters and receivers.  One of the more interesting receivers is the 360 degree IR receiver located on top the Roomba.  It's a pretty simple sensor with just a regular IR receiver pointed upward at a convex mirrior.  This setup looks perfect for a remote control robot.  The code was pretty simple- just the basic DC motor control from the balancing robot- and I added in an IR remote library that I found online to decode the signal.
+<br>
+<br>
+<div class="row">
+<div class="span1">
+</div>
+<div class="span5">
+<img alt="robot" src="images/roombahack/differentialdrive.png" />
+</div>
+ <div class="span5">
+<img alt="sensor" src="images/roombahack/sensor.png" />
+</div>
+</div>
+<br>
+<br>
+I made some small changes to the placement of the motors and added a third caster wheel to make a differential drive robot. The arduino board controlling the motors also decodes the IR signal from the remote to tell the robot what to do. 
+<br>
+<br>
+<div class="row">
+<div class="span1">
+</div>
+<div class="span8">
+<iframe width="420" height="315" src="http://www.youtube.com/embed/9B_c42w4Py8" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<br></p>
+	</div><!-- /.entry-content -->
+	<div class="comments">
+	<h2>Comments !</h2>
+			<div id="disqus_thread"></div>
+			<script type="text/javascript">
+        var disqus_shortname = 'jd-transistorio'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+	</div>
+</article>
+</section>
+				</div>
+				<div class="span3">
+<ul class="nav nav-list well sidebar">
+	<li class="nav-header">
+		<h4>
+			<i class="icon-rss icon-large"></i> 
+			RSS/Atom Feeds
+		</h4>
+	</li>
+	<li>
+		<a href="http://www.transistor.io/feeds/all.atom.xml" rel="alternate">
+		<i class="icon-bookmark icon-large"></i>
+		Atom Feed
+		</a>
+	</li>
+	<li class="nav-header"><h4><i class="icon-external-link"></i>Blogroll</h4></li>
+		<li><a href="http://www.theamphour.com/"><i class="icon-external-link"></i>The Amp Hour</a></li>
+		<li><a href="http://www.hackaday.com"><i class="icon-external-link"></i>Hack A Day</a></li>
+		<li><a href="http://dangerousprototypes.com/"><i class="icon-external-link"></i>Dangerous Prototypes</a></li>
+	<li class="nav-header"><h4><i class="icon-home icon-large"></i> Social</h4></li>
+		<li><a href="http://github.com/jdorweiler"><i class="icon-github icon-large"></i>GitHub</a></li>
+		<li><a href="http://www.linkedin.com/profile/view?id=85206177&trk=nav_responsive_tab_profile_pic"><i class="icon-linkedin icon-large"></i>LinkedIn</a></li>
+		<li><a href="https://twitter.com/jdorw"><i class="icon-twitter icon-large"></i>twitter</a></li>
+	
+	<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+	
+	<li>
+		<a href="http://www.transistor.io/category/chemistry.html">
+		<i class="icon-folder-open icon-large"></i>
+		Chemistry
+		</a>
+	</li>
+	<li>
+		<a href="http://www.transistor.io/category/climbing.html">
+		<i class="icon-folder-open icon-large"></i>
+		Climbing
+		</a>
+	</li>
+	<li>
+		<a href="http://www.transistor.io/category/projects.html">
+		<i class="icon-folder-open icon-large"></i>
+		Projects
+		</a>
+	</li>
+	
+	<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/carbon-fiber.html">
+        <i class="icon-tag icon-large"></i>carbon fiber
+		</a>
+	</li>
+	<li class="tag-3">
+		<a href="http://www.transistor.io/tag/balancing-robot.html">
+        <i class="icon-tag icon-large"></i>balancing robot
+		</a>
+	</li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/arduino.html">
+        <i class="icon-tag icon-large"></i>arduino
+		</a>
+	</li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/electroncis.html">
+        <i class="icon-tag icon-large"></i>electroncis
+		</a>
+	</li>
+	<li class="tag-1">
+		<a href="http://www.transistor.io/tag/robotics.html">
+        <i class="icon-tag icon-large"></i>robotics
+		</a>
+	</li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/biking.html">
+        <i class="icon-tag icon-large"></i>biking
+		</a>
+	</li>
+	<li class="tag-2">
+		<a href="http://www.transistor.io/tag/ros.html">
+        <i class="icon-tag icon-large"></i>ros
+		</a>
+	</li>
+	<li class="tag-3">
+		<a href="http://www.transistor.io/tag/rock-climbing.html">
+        <i class="icon-tag icon-large"></i>rock climbing
+		</a>
+	</li>
+	<li class="tag-3">
+		<a href="http://www.transistor.io/tag/pcb.html">
+        <i class="icon-tag icon-large"></i>PCB
+		</a>
+	</li>
+	<li class="tag-2">
+		<a href="http://www.transistor.io/tag/turtlebot.html">
+        <i class="icon-tag icon-large"></i>turtlebot
+		</a>
+	</li>
+	<li class="tag-2">
+		<a href="http://www.transistor.io/tag/hackaday.html">
+        <i class="icon-tag icon-large"></i>hackaday
+		</a>
+	</li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/chemistry.html">
+        <i class="icon-tag icon-large"></i>chemistry
+		</a>
+	</li>
+	<li class="tag-3">
+		<a href="http://www.transistor.io/tag/roomba.html">
+        <i class="icon-tag icon-large"></i>roomba
+		</a>
+	</li>
+	<li class="tag-2">
+		<a href="http://www.transistor.io/tag/computer-vision.html">
+        <i class="icon-tag icon-large"></i>computer vision
+		</a>
+	</li>
+	<li class="tag-1">
+		<a href="http://www.transistor.io/tag/autonomous-car.html">
+        <i class="icon-tag icon-large"></i>autonomous car
+		</a>
+	</li>
+	<li class="tag-1">
+		<a href="http://www.transistor.io/tag/programming.html">
+        <i class="icon-tag icon-large"></i>programming
+		</a>
+	</li>
+</ul>
+				</div>
+			</div>
+		</div>
+		<div class="span1"></div>
+	</div>
+</div>
+
+<footer class="navbar-fixed-bottom text-center">
+Copyright &copy; 2014 by Jason Dorweiler
+</footer>
+</body>
+</html>

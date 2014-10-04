@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Autonomous Car pt. 2</title>
+	<meta charset="utf-8" />
+	<meta name="author" content="Jason Dorweiler" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- JS Libraries to Load -->
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://www.transistor.io/theme/js/bootstrap.min.js"></script>
+	<script src="http://www.transistor.io/theme/js/progressbars.js"></script>
+	
+	
+	<!-- CSS Styles -->
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/bootstrap.simplex.min.css" type="text/css" />
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/bootstrap-responsive.min.css" type="text/css" />
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/font-awesome.min.css" type="text/css" />
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/main.css" type="text/css">
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/pygment.css" type="text/css">
+	<!--[if IE 7]>
+	<link rel="stylesheet" href="http://www.transistor.io/theme/css/font-awesome-ie7.min.css">
+	<![endif]-->
+	
+	<!-- Feed Information / Copied from Simple Theme -->
+	<link href="http://www.transistor.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="transistor.io Full Atom Feed" />
+	<link href="http://www.transistor.io/feeds/Projects.atom.xml" type="application/atom+xml" rel="alternate" title="transistor.io Categories Atom Feed" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41941180-1', 'transistor.io');
+  ga('send', 'pageview');
+
+</script>
+
+<link href="//vjs.zencdn.net/4.4/video-js.css" rel="stylesheet">
+<script src="//vjs.zencdn.net/4.4/video.js"></script>
+<style>
+.video-js {padding-top: 56.25%}
+.vjs-fullscreen {padding-top: 0px}
+</style>
+
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container pull-left offset1">
+			<a class="btn btn-navbar clearfix pull-right" data-target=".navbar-responsive-collapse" data-toggle="collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+			<a class="brand" href="http://www.transistor.io/index.html">transistor.io </a>
+			
+			<div class="nav-collapse collapse navbar-responsive-collapse">
+				<ul class="nav">
+					<li>
+						<a href="http://www.transistor.io/pages/about-me.html"><i class="icon-user" ></i>About me</a>
+					</li>
+					<li class="divider-vertical"></li>
+					<li >
+						<a href="http://www.transistor.io/category/chemistry.html"><i class="icon-folder-open icon-large"></i> Chemistry</a>
+					</li>
+					<li class="divider-vertical"></li>
+					<li >
+						<a href="http://www.transistor.io/category/climbing.html"><i class="icon-folder-open icon-large"></i> Climbing</a>
+					</li>
+					<li class="divider-vertical"></li>
+					<li class="active">
+						<a href="http://www.transistor.io/category/projects.html"><i class="icon-folder-open icon-large"></i> Projects</a>
+					</li>
+					<li class="divider-vertical"></li>
+				<li >
+					<a href="http://www.transistor.io/archives.html"><i class="icon-th-list"></i> Archives</a>
+				</li>
+				
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid" id="content">
+	<div class="row-fluid">
+		<div class="span1"></div>
+		<div class="span10">
+			<div class="row">
+				<div class="offset1 span8">
+<section id="content">
+<article>
+	<header>
+			<h1>
+					<a href=""
+							rel="bookmark"
+							title="Permalink to Autonomous Car pt. 2">
+							Autonomous Car pt. 2
+					</a>
+			</h1>
+	</header>
+	
+	<div class="entry-content">
+	
+	<div class="well">
+<div class="row-fuild">
+	<div class="span6">
+	<span class="label text-center">Date</span>
+	<abbr class="published" title="2012-09-10T00:00:00">
+		<i class="icon-calendar"></i>Mon 10 September 2012
+	</abbr>
+	</div>
+	<div class="span1">&nbsp;</div>
+	<div class="span5">
+		<span class="label text-center">Tags</span>
+			<a href="http://www.transistor.io/tag/autonomous-car.html">autonomous car</a>
+			<a href="http://www.transistor.io/tag/robotics.html">robotics</a>
+	</div>
+</div>	</div>
+	<p><img alt="" src="images/car/title_2.png" /></p>
+<p>After much work with the Python OpenCV library and testing the image processing on the car, I've decided that I'll leave the computer vision part of this project for later. The simple line detection works well for images like the ones in my previous post. But for more complicated images, such as roads without yellow lane markers, line detection won’t be enough. I'm looking into using a neural network with OpenCV to keep the car on the road. </p>
+<p>Now I am working on the steering. My goal is for the car to steer into the direction of the next waypoint from its current location. I also got a lot of new stuff for the car. Here's how it looks today. I upgraded to an Arduino mega (see below for why), Xbee for sending data wirelessly to my laptop, and a GPS module. 
+<br>
+<br>
+<div class="row">
+<div class="span1">
+</div>
+<div class="span6">
+<img alt="elect1" src="images/car/carelectronics1.png" />
+</div>
+</div></p>
+<p>I spent a lot of time trying to get the steering working with the Arduino Uno. The problem is that the Uno only has one serial port. I was using this serial port for the Xbee communication. The GPS also needs a serial port, so I was running it by using the software serial library. However, the software serial works on interupts and the steering and esc need to have a constant signal. </p>
+<p>What happened was that when the interupt for the GPS would come on, the signal for the servos would stop briefly. This problem caused some serious erratic behavior and resulted in the car jumping off of my workbench several times. The Arduino Mega (borrowed from my 3D printer) solved this problem by having 4 serial ports, which is more than enough for this project. </p>
+<p>So for now I am getting all the code and computations done on the Arduino. I'll leave the computer vision and machine learning stuff for later on. I'm also thinking about replacing the Mega with a much faster <a href="http://www.digilentinc.com/Products/Detail.cfm?Prod=CHIPKIT-MAX32" target="_blank">ChipKit Max32</a>, which uses a 80MHz PIC32 microcontroller. The Mega is working well now, but I'm worried that the 2D Kalman filter I plan on using for the localization will slow it down too much. </p>
+<p>For the Arduino code: 
+Right now I have the GPS data parsed. I also added a LED indicator on the board that is on whenever there is a valid GPS data stream. This is nice for when I'm not near the laptop to see if it has valid data. The GPS heading data and the gyro rate data are sent to a Kalman filter. The GPS heading is very slow. Visually, it seems to lag by 1-2 seconds. The car is capable of reaching up to 20mph, meaning that it could move nearly 60ft before getting a new heading update. To fix this problem, I am using the gyro rate in between those updates to correct the car's heading. So far, this is working but the updated heading is still lags a bit. I need to do some tuning on the Kalman filter to fix this. The car will turn toward the waypoint, but it ends up going in circles because the angle isn't updated fast enough. </p>
+<p>The updated angle is also sent to a PID control with the integral and dervivative portions set to zero until I get the Kalman filter tuned. This will also need a lot of tuning later on. Here's the loop portion of the code below. I'll upload the rest on github later. 
+<br>
+<br>
+<div class="row">
+<div class="span1">
+</div>
+<div class="span8">
+<iframe src="http://pastebin.com/embed_iframe.php?i=Qq3XjjLd" style="border:none;width:100%"></iframe>
+</div>
+</div>
+<br>
+I also decided that I needed a way to regain control of the car if things started to go bad. There's a built-in Arduino library called PulseIn which can be used to measure a pulse position modulation (PPM) signal that put out by a radio receiver. The library can be difficult to work with. It stops the loop while measuring the time of the pulses and may completely stop the loop if it never seen the end of a pulse. This sounded like trouble, so I decided to keep it off of the main control board all together. </p>
+<p>I have several smaller ATtiny85 microcontrollers that would be perfect for this job. I wrote a quick program to read in the PPM signal from the receiver. I gave the signal a bit of a range to avoid any false positives. Any signal outside of 1300-1700ms (the typical signal is around 1500ms) sends one of the pins on the ATtiny high. If the transmitter is on and in range, then the ATtiny should see 1500ms. If it goes out of range, then this will drop to zero. If I pull the trigger on the transmitter, it will also cause the value to go out of its set range. 
+<br>
+<br>
+<div class="row">
+<div class="span1">
+</div>
+<div class="span6">
+<img alt="killswitch" src="images/car/killswitch.png" />
+</div>
+</div>
+<br>
+In the main loop on the Mega, I added a part to read in the voltage coming from the pin on the ATtiny. A voltage higher than 1.0V either means that the car is out of range or that I triggered the stop button on the transmitter. </p>
+<iframe src="http://pastebin.com/embed_iframe.php?i=ambKsrE4" style="border:none;width:100%"></iframe>
+	</div><!-- /.entry-content -->
+	<div class="comments">
+	<h2>Comments !</h2>
+			<div id="disqus_thread"></div>
+			<script type="text/javascript">
+        var disqus_shortname = 'jd-transistorio'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+	</div>
+</article>
+</section>
+				</div>
+				<div class="span3">
+<ul class="nav nav-list well sidebar">
+	<li class="nav-header">
+		<h4>
+			<i class="icon-rss icon-large"></i> 
+			RSS/Atom Feeds
+		</h4>
+	</li>
+	<li>
+		<a href="http://www.transistor.io/feeds/all.atom.xml" rel="alternate">
+		<i class="icon-bookmark icon-large"></i>
+		Atom Feed
+		</a>
+	</li>
+	<li class="nav-header"><h4><i class="icon-external-link"></i>Blogroll</h4></li>
+		<li><a href="http://www.theamphour.com/"><i class="icon-external-link"></i>The Amp Hour</a></li>
+		<li><a href="http://www.hackaday.com"><i class="icon-external-link"></i>Hack A Day</a></li>
+		<li><a href="http://dangerousprototypes.com/"><i class="icon-external-link"></i>Dangerous Prototypes</a></li>
+	<li class="nav-header"><h4><i class="icon-home icon-large"></i> Social</h4></li>
+		<li><a href="http://github.com/jdorweiler"><i class="icon-github icon-large"></i>GitHub</a></li>
+		<li><a href="http://www.linkedin.com/profile/view?id=85206177&trk=nav_responsive_tab_profile_pic"><i class="icon-linkedin icon-large"></i>LinkedIn</a></li>
+		<li><a href="https://twitter.com/jdorw"><i class="icon-twitter icon-large"></i>twitter</a></li>
+	
+	<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+	
+	<li>
+		<a href="http://www.transistor.io/category/chemistry.html">
+		<i class="icon-folder-open icon-large"></i>
+		Chemistry
+		</a>
+	</li>
+	<li>
+		<a href="http://www.transistor.io/category/climbing.html">
+		<i class="icon-folder-open icon-large"></i>
+		Climbing
+		</a>
+	</li>
+	<li>
+		<a href="http://www.transistor.io/category/projects.html">
+		<i class="icon-folder-open icon-large"></i>
+		Projects
+		</a>
+	</li>
+	
+	<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/carbon-fiber.html">
+        <i class="icon-tag icon-large"></i>carbon fiber
+		</a>
+	</li>
+	<li class="tag-3">
+		<a href="http://www.transistor.io/tag/balancing-robot.html">
+        <i class="icon-tag icon-large"></i>balancing robot
+		</a>
+	</li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/arduino.html">
+        <i class="icon-tag icon-large"></i>arduino
+		</a>
+	</li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/electroncis.html">
+        <i class="icon-tag icon-large"></i>electroncis
+		</a>
+	</li>
+	<li class="tag-1">
+		<a href="http://www.transistor.io/tag/robotics.html">
+        <i class="icon-tag icon-large"></i>robotics
+		</a>
+	</li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/biking.html">
+        <i class="icon-tag icon-large"></i>biking
+		</a>
+	</li>
+	<li class="tag-2">
+		<a href="http://www.transistor.io/tag/ros.html">
+        <i class="icon-tag icon-large"></i>ros
+		</a>
+	</li>
+	<li class="tag-3">
+		<a href="http://www.transistor.io/tag/rock-climbing.html">
+        <i class="icon-tag icon-large"></i>rock climbing
+		</a>
+	</li>
+	<li class="tag-3">
+		<a href="http://www.transistor.io/tag/pcb.html">
+        <i class="icon-tag icon-large"></i>PCB
+		</a>
+	</li>
+	<li class="tag-2">
+		<a href="http://www.transistor.io/tag/turtlebot.html">
+        <i class="icon-tag icon-large"></i>turtlebot
+		</a>
+	</li>
+	<li class="tag-2">
+		<a href="http://www.transistor.io/tag/hackaday.html">
+        <i class="icon-tag icon-large"></i>hackaday
+		</a>
+	</li>
+	<li class="tag-4">
+		<a href="http://www.transistor.io/tag/chemistry.html">
+        <i class="icon-tag icon-large"></i>chemistry
+		</a>
+	</li>
+	<li class="tag-3">
+		<a href="http://www.transistor.io/tag/roomba.html">
+        <i class="icon-tag icon-large"></i>roomba
+		</a>
+	</li>
+	<li class="tag-2">
+		<a href="http://www.transistor.io/tag/computer-vision.html">
+        <i class="icon-tag icon-large"></i>computer vision
+		</a>
+	</li>
+	<li class="tag-1">
+		<a href="http://www.transistor.io/tag/autonomous-car.html">
+        <i class="icon-tag icon-large"></i>autonomous car
+		</a>
+	</li>
+	<li class="tag-1">
+		<a href="http://www.transistor.io/tag/programming.html">
+        <i class="icon-tag icon-large"></i>programming
+		</a>
+	</li>
+</ul>
+				</div>
+			</div>
+		</div>
+		<div class="span1"></div>
+	</div>
+</div>
+
+<footer class="navbar-fixed-bottom text-center">
+Copyright &copy; 2014 by Jason Dorweiler
+</footer>
+</body>
+</html>
