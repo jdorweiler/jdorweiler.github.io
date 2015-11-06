@@ -136,7 +136,7 @@ yes my workbench is a mess
 </ul>
 <p>In part 1, I laid out my plans for the navigation algorithm and spent some time working on the computer vision part of the project.  I was looking at sending an unboard camera image from my Android phone to a laptop to do some lane detection.  The large variation between different roads posed a problem.  I did get the algorithm to work pretty well with a perfect-looking road.  There were also some issues with lag between sending the image, processing, and sending it back.</p>
 <ul>
-<li><a href="http://jdorweiler.github.io/autonomous-car-pt2.html" target="_blank"><h4>Part 2</h4></a></li>
+<li><a href="http://jdorweiler.github.io/autonomous-car-pt-2.html" target="_blank"><h4>Part 2</h4></a></li>
 </ul>
 <p>In part 2, I officially scrapped the computer vision aspect.  The car got an upgrade from an Arduio Uno to an Arduino Mega (more I/O was needed).  I had some trouble with the Uno lacking serial ports.  Both the Xbee radio and the GPS needed a serial port, but the Uno only had one.  One way to solve this problem is to use software serial, but it has interrupts that interfere with the servo PWM generator.</p>
 <p>I was a bit worried about the computation time on the Arduino, so I thought about upgrading again to a ChipKit Max32, which uses a much faster 80MHz PIC32 microcontroller.</p>
